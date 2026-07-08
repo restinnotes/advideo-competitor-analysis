@@ -1500,6 +1500,15 @@
 
             // 视频信息
             html += '<div class="section"><h2>视频信息</h2>';
+            
+            // 尝试查找视频文件
+            const videoFiles = ['video_06.mp4', 'video_08.mp4', 'video_15.mp4'];
+            const videoFile = videoFiles.find(f => videoId.includes(f.replace('.mp4', ''))) || '';
+            
+            if (videoFile) {
+                html += '<div style="margin-bottom:15px"><video controls style="max-width:100%;border-radius:8px"><source src="samples/' + escHtml(videoFile) + '" type="video/mp4">您的浏览器不支持视频播放</video></div>';
+            }
+            
             html += '<div class="meta-grid">';
             html += '<div class="meta-item"><div class="label">品牌/产品</div><div class="value">' + escHtml(videoRecord.observed_brand_or_product_text || '-') + '</div></div>';
             html += '<div class="meta-item"><div class="label">产品类别</div><div class="value">' + escHtml(videoRecord.product_category || '-') + '</div></div>';
