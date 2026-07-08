@@ -1473,6 +1473,7 @@
             const extractionWarnings = ingestionStatus.extraction_warnings || [];
             const finalResult = data.final_result || {};
             const frameRecords = data.frame_records || [];
+            const outputPrefix = data.output_prefix || 'outputs/' + videoId;
 
             let html = '';
 
@@ -1567,7 +1568,7 @@
             if (frameRecords.length) {
                 html += '<div class="section"><h2>关键帧 (' + frameRecords.length + ' 个)</h2><div class="frame-grid">';
                 frameRecords.forEach(f => {
-                    const imgPath = 'outputs/' + videoId + '/' + (f.image_path || '');
+                    const imgPath = outputPrefix + '/' + (f.image_path || '');
                     html += '<div class="frame-card">';
                     html += '<img src="' + escHtml(imgPath) + '" alt="' + escHtml(f.frame_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22><rect fill=%22%23f0f0f0%22 width=%22280%22 height=%22180%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
                     html += '<div class="frame-info">';

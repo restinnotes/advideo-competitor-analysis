@@ -45,10 +45,14 @@ def main() -> None:
                             if line:
                                 frame_records.append(json.loads(line))
                 
+                # 存储相对于 outputs 目录的路径前缀
+                rel_path = str(nested_dir.relative_to(outputs_dir))
+                
                 results[nested_dir.name] = {
                     "final_result": final_result,
                     "global_analysis": global_analysis,
-                    "frame_records": frame_records
+                    "frame_records": frame_records,
+                    "output_prefix": "outputs/" + rel_path
                 }
 
     template = template_path.read_text(encoding="utf-8")
