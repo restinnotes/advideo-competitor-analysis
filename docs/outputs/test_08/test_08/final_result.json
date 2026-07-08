@@ -1,0 +1,15 @@
+{
+  "video_id": "test_08",
+  "status": "pass",
+  "global_analysis_path": "global_analysis.json",
+  "records_dir": "records",
+  "keyframes_dir": "keyframes",
+  "module_count": 4,
+  "raw_element_mention_count": 7,
+  "frame_request_count": 5,
+  "frames_extracted": 5,
+  "transfer_pattern_count": 2,
+  "has_visual_tactic": true,
+  "warnings": [],
+  "summary": "采用‘痛点共鸣 + 明星背书 + 成分科普 + 超值赠品’的组合策略。视频前半段通过展示多种皮肤问题（痘痘、泛红、暗沉）引发焦虑，中间由男明星代言建立信任并解释核心成分功效，后半段通过密集的赠品堆叠和价格锚定制造‘不买就亏’的紧迫感，强力推动即时转化。"
+}

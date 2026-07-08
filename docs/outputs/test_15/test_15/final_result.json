@@ -1,0 +1,15 @@
+{
+  "video_id": "test_15",
+  "status": "pass",
+  "global_analysis_path": "global_analysis.json",
+  "records_dir": "records",
+  "keyframes_dir": "keyframes",
+  "module_count": 5,
+  "raw_element_mention_count": 8,
+  "frame_request_count": 5,
+  "frames_extracted": 5,
+  "transfer_pattern_count": 2,
+  "has_visual_tactic": true,
+  "warnings": [],
+  "summary": "采用‘痛点唤醒 + 明星背书 + 价格锚定 + 成分专业’的组合策略。通过展示旧水乳的无效与皮肤负担，引出产品作为替代方案；利用多位达人/明星口播建立信任；通过夸张的价格对比和赠品堆叠制造超值感；最后以成分（青蒿油AN+）强化专业度并催促下单。"
+}

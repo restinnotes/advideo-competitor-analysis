@@ -7,20 +7,34 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
-        .header { background: #fff; padding: 20px; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .header h1 { font-size: 20px; margin-bottom: 10px; }
+        .header { background: #fff; padding: 12px 20px; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; gap: 20px; }
+        .header h1 { font-size: 16px; white-space: nowrap; }
         .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
-        .tab { padding: 8px 16px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: #fff; font-size: 13px; }
+        .tab { padding: 5px 14px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: #fff; font-size: 13px; }
         .tab:hover { border-color: #1890ff; }
         .tab.active { background: #1890ff; color: #fff; border-color: #1890ff; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .container { padding: 16px 20px; }
         .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
         .section h2 { font-size: 16px; color: #1890ff; margin-bottom: 15px; border-bottom: 2px solid #1890ff; padding-bottom: 8px; }
         .section h3 { font-size: 14px; color: #666; margin-bottom: 10px; }
-        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 15px; }
-        .meta-item { background: #fafafa; padding: 10px; border-radius: 6px; }
-        .meta-item .label { font-size: 11px; color: #999; text-transform: uppercase; }
-        .meta-item .value { font-size: 14px; font-weight: 500; margin-top: 4px; }
+        .top-panel { display: flex; gap: 20px; background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .top-left { flex: 0 0 35%; }
+        .top-left video { width: 100%; border-radius: 8px; background: #000; }
+        .top-right { flex: 1; min-width: 0; }
+        .top-right h2 { font-size: 16px; color: #1890ff; margin-bottom: 15px; border-bottom: 2px solid #1890ff; padding-bottom: 8px; }
+        .info-section { display: flex; flex-direction: column; gap: 12px; }
+        .info-row { display: flex; gap: 12px; }
+        .info-row.summary { flex-direction: column; gap: 6px; }
+        .info-label { font-size: 12px; color: #999; min-width: 70px; flex-shrink: 0; }
+        .info-value { font-size: 14px; color: #333; line-height: 1.6; }
+        .info-row.summary .info-value { background: #f8f8f8; padding: 10px; border-radius: 6px; font-size: 13px; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin-bottom: 8px; }
+        .meta-item { background: #fafafa; padding: 5px 8px; border-radius: 5px; }
+        .meta-item .label { font-size: 10px; color: #999; text-transform: uppercase; }
+        .meta-item .value { font-size: 12px; font-weight: 500; margin-top: 1px; }
+        .frame-section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+        .frame-section h2 { font-size: 16px; color: #1890ff; margin-bottom: 12px; border-bottom: 2px solid #1890ff; padding-bottom: 6px; }
+        .frame-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
         .status-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; }
         .status-pass { background: #f6ffed; color: #389e0d; border: 1px solid #b7eb8f; }
         .status-fail { background: #fff2f0; color: #cf1322; border: 1px solid #ffa39e; }
@@ -38,13 +52,20 @@
         .mention-card h5 { font-size: 13px; color: #722ed1; margin-bottom: 6px; }
         .mention-card p { color: #666; line-height: 1.5; margin-bottom: 4px; }
         .mention-card .type { background: #f9f0ff; color: #722ed1; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
-        .frame-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .frame-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
-        .frame-card img { width: 100%; height: 180px; object-fit: cover; background: #f0f0f0; }
+        .frame-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; cursor: pointer; transition: box-shadow 0.2s; }
+        .frame-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .frame-card img { width: 100%; height: 280px; object-fit: contain; background: #f8f8f8; }
         .frame-info { padding: 12px; }
         .frame-info h4 { font-size: 13px; color: #1890ff; margin-bottom: 6px; }
         .frame-info p { font-size: 11px; color: #666; line-height: 1.5; margin-bottom: 4px; }
-        .frame-info .role { background: #e6f7ff; color: #1890ff; padding: 2px 6px; border-radius: 3px; font-size: 10px; }
+        .frame-info .role { background: #e6f7ff; color: #1890ff; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
+        .frame-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; }
+        
+        /* 图片放大模态框 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+        .modal.active { display: flex; }
+        .modal img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 1001; }
         .pattern-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
         .pattern-card { border: 1px solid #eee; border-radius: 8px; padding: 15px; }
         .pattern-card h4 { font-size: 14px; color: #722ed1; margin-bottom: 8px; }
@@ -53,9 +74,9 @@
         .pattern-card .high { background: #f6ffed; color: #389e0d; }
         .pattern-card .medium { background: #fffbe6; color: #faad14; }
         .pattern-card .low { background: #fff2f0; color: #cf1322; }
-        .summary-box { background: #f8f8f8; padding: 15px; border-radius: 8px; margin-top: 10px; }
-        .summary-box p { font-size: 13px; line-height: 1.6; margin-bottom: 8px; }
-        .summary-box .label { font-size: 11px; color: #999; }
+        .summary-box { background: #f8f8f8; padding: 8px 10px; border-radius: 6px; margin-top: 8px; }
+        .summary-box p { font-size: 11px; line-height: 1.5; margin-bottom: 4px; }
+        .summary-box .label { font-size: 10px; color: #999; }
         .no-video { text-align: center; padding: 40px; color: #999; }
         .hidden { display: none; }
     </style>
@@ -66,6 +87,12 @@
         <div class="tabs" id="tabs"></div>
     </div>
     <div class="container" id="container"></div>
+    
+    <!-- 图片放大模态框 -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" src="" alt="放大图片">
+    </div>
 
     <script>
         const results = {
@@ -525,7 +552,16 @@
         "warnings": [],
         "extraction_warnings": []
       }
-    }
+    },
+    "output_prefix": "outputs/test_06/test_06",
+    "frame_records": [
+      {"frame_id": "test_06_fr_001", "video_id": "test_06", "module_id": "m_hook", "frame_request_id": "fr_001", "timestamp_sec": 0.5, "image_path": "keyframes/m_hook/frame_001.jpg", "frame_role": "visual_tactic_evidence", "what_it_shows": "达人夸张惊讶的表情，手持三盒绿色产品，背景为浴室木门。", "visual_tactic": "夸张面部表情 + 产品堆叠", "related_mentions": ["rm_001", "rm_007"]},
+      {"frame_id": "test_06_fr_004", "video_id": "test_06", "module_id": "m_demo", "frame_request_id": "fr_004", "timestamp_sec": 31.0, "image_path": "keyframes/m_demo/frame_002.jpg", "frame_role": "visual_tactic_evidence", "what_it_shows": "手部特写，浅绿色软管挤出白色膏体，背景是摆放着香水瓶的梳妆台。", "visual_tactic": "质地微距特写", "related_mentions": ["rm_006"]},
+      {"frame_id": "test_06_fr_002", "video_id": "test_06", "module_id": "m_price_anchor", "frame_request_id": "fr_002", "timestamp_sec": 6.0, "image_path": "keyframes/m_price_anchor/frame_003.jpg", "frame_role": "offer_evidence", "what_it_shows": "手机屏幕上的购买页面特写，突出'实付¥109'的价格标签。", "visual_tactic": "价格弹窗刺激", "related_mentions": ["rm_002"]},
+      {"frame_id": "test_06_fr_006", "video_id": "test_06", "module_id": "m_demo", "frame_request_id": "fr_006", "timestamp_sec": 37.0, "image_path": "keyframes/m_demo/frame_004.jpg", "frame_role": "result_evidence", "what_it_shows": "达人洗完脸后，皮肤看起来水润光泽，用手轻拍脸颊，面带微笑。", "visual_tactic": "前后效果对比暗示", "related_mentions": []},
+      {"frame_id": "test_06_fr_005", "video_id": "test_06", "module_id": "m_cta", "frame_request_id": "fr_005", "timestamp_sec": 13.0, "image_path": "keyframes/m_cta/frame_005.jpg", "frame_role": "offer_evidence", "what_it_shows": "手机屏幕上的商品详情页，中间有一个显眼的'限购1件'黑色标签。", "visual_tactic": "限购标签视觉触发", "related_mentions": ["rm_005"]},
+      {"frame_id": "test_06_fr_003", "video_id": "test_06", "module_id": "m_proof", "frame_request_id": "fr_003", "timestamp_sec": 18.5, "image_path": "keyframes/m_proof/frame_006.jpg", "frame_role": "proof", "what_it_shows": "达人脸上涂满白色泡沫正在洗脸，上方悬浮着'青蒿油AN+'的绿色成分卡片。", "visual_tactic": "成分卡片悬浮 + 使用场景", "related_mentions": ["rm_003"]}
+    ]
   },
   "test_08": {
     "final_result": {
@@ -962,7 +998,15 @@
         "warnings": [],
         "extraction_warnings": []
       }
-    }
+    },
+    "output_prefix": "outputs/test_08/test_08",
+    "frame_records": [
+      {"frame_id": "test_08_fr_001", "video_id": "test_08", "module_id": "m_hook", "frame_request_id": "fr_001", "timestamp_sec": 0, "image_path": "keyframes/m_hook/frame_001.jpg", "frame_role": "visual_tactic_evidence", "what_it_shows": "CG玻璃质感人脸特写，表现皮肤问题的抽象概念。", "visual_tactic": "CG特效人脸", "related_mentions": ["rm_001"]},
+      {"frame_id": "test_08_fr_002", "video_id": "test_08", "module_id": "m_hook", "frame_request_id": "fr_002", "timestamp_sec": 8, "image_path": "keyframes/m_hook/frame_002.jpg", "frame_role": "pain_evidence", "what_it_shows": "戴眼镜女性满脸泛红和痘痘的真实面部特写。", "visual_tactic": "脸部问题特写", "related_mentions": ["rm_002"]},
+      {"frame_id": "test_08_fr_004", "video_id": "test_08", "module_id": "m_demo", "frame_request_id": "fr_004", "timestamp_sec": 29, "image_path": "keyframes/m_demo/frame_003.jpg", "frame_role": "product_evidence", "what_it_shows": "微距镜头，白色管状物尖端挤出乳白色液体，悬停在透明水晶球上方即将滴落。", "visual_tactic": "质地微距展示", "related_mentions": ["rm_004"]},
+      {"frame_id": "test_08_fr_005", "video_id": "test_08", "module_id": "m_offer", "frame_request_id": "fr_005", "timestamp_sec": 69, "image_path": "keyframes/m_offer/frame_004.jpg", "frame_role": "offer_evidence", "what_it_shows": "俯拍视角，木质托盘上整齐摆放着两盒主品、大量独立包装、照片卡和徽章，画面饱满。", "visual_tactic": "赠品堆叠展示", "related_mentions": ["rm_005"]},
+      {"frame_id": "test_08_fr_003", "video_id": "test_08", "module_id": "m_proof", "frame_request_id": "fr_003", "timestamp_sec": 27, "image_path": "keyframes/m_proof/frame_005.jpg", "frame_role": "generic_talking_head", "what_it_shows": "男明星身穿灰西装坐在桌前，手持产品微笑看向镜头。", "visual_tactic": "明星同款字样", "related_mentions": ["rm_003"]}
+    ]
   },
   "test_15": {
     "final_result": {
@@ -1434,7 +1478,15 @@
         "warnings": [],
         "extraction_warnings": []
       }
-    }
+    },
+    "output_prefix": "outputs/test_15/test_15",
+    "frame_records": [
+      {"frame_id": "test_15_fr_001", "video_id": "test_15", "module_id": "m_hook", "frame_request_id": "fr_001", "timestamp_sec": 58, "image_path": "keyframes/m_hook/frame_001.jpg", "frame_role": "pain_evidence", "what_it_shows": "女性脸部泛红、有痘印的特写，手指指向瑕疵。", "visual_tactic": "脸部问题特写制造痛点焦虑", "related_mentions": ["rm_001"]},
+      {"frame_id": "test_15_fr_002", "video_id": "test_15", "module_id": "m_price_anchor", "frame_request_id": "fr_002", "timestamp_sec": 35, "image_path": "keyframes/m_price_anchor/frame_002.jpg", "frame_role": "offer_evidence", "what_it_shows": "打开的绿色大礼盒，内部装满次抛精华和包装盒。", "visual_tactic": "赠品堆叠制造超值感", "related_mentions": ["rm_003"]},
+      {"frame_id": "test_15_fr_003", "video_id": "test_15", "module_id": "m_proof", "frame_request_id": "fr_003", "timestamp_sec": 75, "image_path": "keyframes/m_proof/frame_003.jpg", "frame_role": "product_evidence", "what_it_shows": "手指特写指向包装盒背面的成分表，高亮'青蒿油AN+'。", "visual_tactic": "成分卡片制造专业可信", "related_mentions": ["rm_004"]},
+      {"frame_id": "test_15_fr_005", "video_id": "test_15", "module_id": "m_solution_demo", "frame_request_id": "fr_005", "timestamp_sec": 16, "image_path": "keyframes/m_solution_demo/frame_004.jpg", "frame_role": "result_evidence", "what_it_shows": "女性涂抹精华后，脸颊呈现水润光泽的特写。", "visual_tactic": "使用前后面部对比", "related_mentions": ["rm_002"]},
+      {"frame_id": "test_15_fr_004", "video_id": "test_15", "module_id": "m_cta", "frame_request_id": "fr_004", "timestamp_sec": 53, "image_path": "keyframes/m_cta/frame_005.jpg", "frame_role": "cta", "what_it_shows": "主播手持礼盒，画面右侧出现红色向下箭头。", "visual_tactic": "箭头指引", "related_mentions": ["rm_005"]}
+    ]
   }
 };
 
@@ -1473,59 +1525,58 @@
             const extractionWarnings = ingestionStatus.extraction_warnings || [];
             const finalResult = data.final_result || {};
             const frameRecords = data.frame_records || [];
-            const outputPrefix = data.output_prefix || 'outputs/' + videoId;
+            const outputPrefix = data.output_prefix || ('outputs/' + videoId + '/' + videoId);
 
             let html = '';
 
-            // 状态和摘要
-            html += '<div class="section"><h2>分析状态</h2>';
-            html += '<div class="meta-grid">';
-            html += '<div class="meta-item"><div class="label">状态</div><div class="value"><span class="status-badge ' + (finalResult.status === 'pass' ? 'status-pass' : 'status-fail') + '">' + escHtml(finalResult.status || '-') + '</span></div></div>';
-            html += '<div class="meta-item"><div class="label">视频ID</div><div class="value">' + escHtml(videoId) + '</div></div>';
-            html += '<div class="meta-item"><div class="label">时长</div><div class="value">' + (videoRecord.duration_sec || 0).toFixed(1) + 's</div></div>';
-            html += '<div class="meta-item"><div class="label">模块数</div><div class="value">' + (finalResult.module_count || moduleRecords.length) + '</div></div>';
-            html += '<div class="meta-item"><div class="label">元素提及</div><div class="value">' + (finalResult.raw_element_mention_count || mentions.length) + '</div></div>';
-            html += '<div class="meta-item"><div class="label">关键帧</div><div class="value">' + (finalResult.frames_extracted || 0) + '</div></div>';
-            html += '<div class="meta-item"><div class="label">可迁移模式</div><div class="value">' + (finalResult.transfer_pattern_count || patterns.length) + '</div></div>';
-            html += '<div class="meta-item"><div class="label">包含视觉手法</div><div class="value">' + (finalResult.has_visual_tactic ? '✓' : '✗') + '</div></div>';
-            html += '</div>';
+            // ===== 顶部双栏面板：左侧视频，右侧信息 =====
+            html += '<div class="top-panel">';
 
-            // 警告信息
-            const allWarnings = [...warnings, ...extractionWarnings];
-            if (allWarnings.length) {
-                html += '<h3>警告信息</h3><ul class="warning-list">';
-                allWarnings.forEach(w => { html += '<li>' + escHtml(w) + '</li>'; });
-                html += '</ul>';
-            }
-            html += '</div>';
-
-            // 视频信息
-            html += '<div class="section"><h2>视频信息</h2>';
-            
-            // 尝试查找视频文件
+            // 左侧：视频
+            html += '<div class="top-left">';
             const videoFiles = ['video_06.mp4', 'video_08.mp4', 'video_15.mp4'];
-            const videoFile = videoFiles.find(f => videoId.includes(f.replace('.mp4', ''))) || '';
-            
+            const videoNum = videoId.match(/(\d+)$/);
+            const videoFile = (videoNum ? videoFiles.find(f => f.includes('_' + videoNum[1] + '.')) : '') || '';
             if (videoFile) {
-                html += '<div style="margin-bottom:15px"><video controls style="max-width:100%;border-radius:8px"><source src="samples/' + escHtml(videoFile) + '" type="video/mp4">您的浏览器不支持视频播放</video></div>';
+                html += '<video controls><source src="samples/' + escHtml(videoFile) + '" type="video/mp4">您的浏览器不支持视频播放</video>';
             }
-            
-            html += '<div class="meta-grid">';
-            html += '<div class="meta-item"><div class="label">品牌/产品</div><div class="value">' + escHtml(videoRecord.observed_brand_or_product_text || '-') + '</div></div>';
-            html += '<div class="meta-item"><div class="label">产品类别</div><div class="value">' + escHtml(videoRecord.product_category || '-') + '</div></div>';
-            html += '<div class="meta-item"><div class="label">主要产品</div><div class="value">' + escHtml(videoRecord.main_product || '-') + '</div></div>';
-            html += '<div class="meta-item"><div class="label">语言</div><div class="value">' + escHtml(videoRecord.language || '-') + '</div></div>';
-            html += '<div class="meta-item"><div class="label">目标受众</div><div class="value">' + escHtml((videoRecord.target_audience || []).join(', ') || '-') + '</div></div>';
-            html += '<div class="meta-item"><div class="label">主要优惠</div><div class="value">' + escHtml(videoRecord.main_offer || '-') + '</div></div>';
             html += '</div>';
 
-            if (videoRecord.overall_strategy_summary) {
-                html += '<div class="summary-box"><p><span class="label">策略总结: </span>' + escHtml(videoRecord.overall_strategy_summary) + '</p></div>';
-            }
+            // 右侧：产品信息 + 策略
+            html += '<div class="top-right">';
+            html += '<h2>视频信息</h2>';
+            html += '<div class="info-section">';
+            html += '<div class="info-row"><span class="info-label">品牌/产品</span><span class="info-value">' + escHtml(videoRecord.observed_brand_or_product_text || '-') + '</span></div>';
+            html += '<div class="info-row"><span class="info-label">产品类别</span><span class="info-value">' + escHtml(videoRecord.product_category || '-') + '</span></div>';
+            html += '<div class="info-row"><span class="info-label">时长</span><span class="info-value">' + (videoRecord.duration_sec || 0).toFixed(1) + 's</span></div>';
+            html += '<div class="info-row"><span class="info-label">目标受众</span><span class="info-value">' + escHtml((videoRecord.target_audience || []).join(', ') || '-') + '</span></div>';
+            html += '<div class="info-row"><span class="info-label">主要优惠</span><span class="info-value">' + escHtml(videoRecord.main_offer || '-') + '</span></div>';
             if (videoRecord.strategy_pattern) {
-                html += '<div class="summary-box"><p><span class="label">策略模式: </span>' + escHtml(videoRecord.strategy_pattern) + '</p></div>';
+                html += '<div class="info-row"><span class="info-label">策略模式</span><span class="info-value">' + escHtml(videoRecord.strategy_pattern) + '</span></div>';
+            }
+            if (videoRecord.overall_strategy_summary) {
+                html += '<div class="info-row summary"><span class="info-label">策略总结</span><span class="info-value">' + escHtml(videoRecord.overall_strategy_summary) + '</span></div>';
             }
             html += '</div>';
+            html += '</div>';
+            html += '</div>'; // end top-panel
+
+            // 关键帧
+            if (frameRecords.length) {
+                html += '<div class="section"><h2>关键帧 (' + frameRecords.length + ' 个)</h2><div class="frame-grid">';
+                frameRecords.forEach(f => {
+                    const imgPath = outputPrefix + '/' + (f.image_path || '');
+                    html += '<div class="frame-card">';
+                    html += '<img src="' + escHtml(imgPath) + '" alt="' + escHtml(f.frame_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22><rect fill=%22%23f0f0f0%22 width=%22280%22 height=%22180%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
+                    html += '<div class="frame-info">';
+                    html += '<h4>' + escHtml(f.frame_request_id || f.frame_id) + '</h4>';
+                    html += '<p><span class="role">' + escHtml(f.frame_role || '-') + '</span> | ' + (f.timestamp_sec || 0).toFixed(1) + 's</p>';
+                    html += '<p><b>捕捉内容:</b> ' + escHtml(f.what_it_shows || '-') + '</p>';
+                    html += '<p><b>视觉手法:</b> ' + escHtml(f.visual_tactic || '-') + '</p>';
+                    html += '</div></div>';
+                });
+                html += '</div></div>';
+            }
 
             // 创意模块
             if (moduleRecords.length) {
@@ -1560,23 +1611,6 @@
                     html += '<p><b>在模块中的角色:</b> ' + escHtml(m.role_in_module || '-') + '</p>';
                     if (m.notes) html += '<p><b>备注:</b> ' + escHtml(m.notes) + '</p>';
                     html += '</div>';
-                });
-                html += '</div></div>';
-            }
-
-            // 关键帧
-            if (frameRecords.length) {
-                html += '<div class="section"><h2>关键帧 (' + frameRecords.length + ' 个)</h2><div class="frame-grid">';
-                frameRecords.forEach(f => {
-                    const imgPath = outputPrefix + '/' + (f.image_path || '');
-                    html += '<div class="frame-card">';
-                    html += '<img src="' + escHtml(imgPath) + '" alt="' + escHtml(f.frame_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22><rect fill=%22%23f0f0f0%22 width=%22280%22 height=%22180%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
-                    html += '<div class="frame-info">';
-                    html += '<h4>' + escHtml(f.frame_request_id || f.frame_id) + '</h4>';
-                    html += '<p><span class="role">' + escHtml(f.frame_role || '-') + '</span> | ' + (f.timestamp_sec || 0).toFixed(1) + 's</p>';
-                    html += '<p><b>捕捉内容:</b> ' + escHtml(f.what_it_shows || '-') + '</p>';
-                    html += '<p><b>视觉手法:</b> ' + escHtml(f.visual_tactic || '-') + '</p>';
-                    html += '</div></div>';
                 });
                 html += '</div></div>';
             }

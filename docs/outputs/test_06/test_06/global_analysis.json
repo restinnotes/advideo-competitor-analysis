@@ -1,0 +1,441 @@
+{
+  "schema_version": "competitor_global_image_v1",
+  "video_record": {
+    "video_id": "vid_20240528_armyoo_clinical",
+    "observed_brand_or_product_text": "ARMYOO 安敏优 青蒿氨基酸洗面奶",
+    "product_category": "洁面",
+    "main_product": "ARMYOO 安敏优青蒿氨基酸洗面奶",
+    "duration_sec": 46.4,
+    "language": "zh",
+    "overall_strategy_summary": "采用‘痛点钩子 + 价格锚定 + 成分背书 + 稀缺促销’的组合策略。达人以夸张口吻制造焦虑，随即抛出极具诱惑力的低价机制，通过展示核心成分（青蒿油、仿生因子）建立专业信任，最后利用限购和紧迫感促成下单。",
+    "strategy_pattern": "痛点引入 -> 价格反差 -> 成分证明 -> 场景演示 -> 稀缺催单",
+    "target_audience": [
+      "敏感肌人群",
+      "油痘肌人群",
+      "有闭口困扰的护肤用户"
+    ],
+    "main_pain_points": [
+      "脸上爱长闭口",
+      "摸起来粗糙",
+      "出油闷痘",
+      "皮肤屏障受损"
+    ],
+    "main_selling_points": [
+      "温和不刺激",
+      "深层清洁毛孔油脂",
+      "修护皮肤屏障",
+      "冰淇淋质地丝滑",
+      "洗后清爽不紧绷"
+    ],
+    "main_offer": "官方旗舰店拉新活动，正装到手价极低，但每人限购一件。",
+    "main_visual_tactics": [
+      "价格弹窗对比",
+      "泡沫制造爽感",
+      "脸部问题特写",
+      "成分卡片悬浮展示",
+      "前后肤质对比暗示"
+    ],
+    "creative_summary_for_generation": "视频采用真人出镜口播结合产品特写与UI弹窗的形式。开头用夸张表情和‘穷疯了’的话术吸引注意，中间穿插大量泡沫洗脸的特写镜头展示质地和清洁力，配合成分卡强调专业性。结尾通过手机截图展示限购规则，营造紧迫感。整体节奏快，信息密度高，视觉元素丰富。",
+    "created_by": "global_agent",
+    "schema_version": "competitor_global_image_v1"
+  },
+  "module_records": [
+    {
+      "module_id": "m_hook",
+      "module_name": "PainPointHook",
+      "module_name_cn": "痛点钩子",
+      "module_role": "attention_hook",
+      "what_happens": "达人以夸张表情开场，讲述老婆说他‘穷疯了’，并提到为了买洗面奶拿全家手机抢，迅速建立戏剧冲突和好奇心。",
+      "why_it_matters": "利用反常理的行为描述（抢手机）和自嘲式幽默打破用户防御心理，快速抓住注意力，为后续产品种草做铺垫。",
+      "evidence_timestamps": [
+        0.0,
+        1.0
+      ],
+      "key_text_or_speech": [
+        "我老婆说我穷疯了",
+        "竟然拿全家人的手机去抢"
+      ],
+      "visual_tactics_summary": [
+        "夸张面部表情",
+        "手持多盒产品制造视觉冲击"
+      ],
+      "module_summary_for_generation": "可借鉴使用生活化、略带夸张的叙事作为开头，将购买行为与家庭互动结合，制造趣味性和记忆点，避免平铺直叙的产品介绍。"
+    },
+    {
+      "module_id": "m_price_anchor",
+      "module_name": "PriceAnchor",
+      "module_name_cn": "价格锚定",
+      "module_role": "value_proposition",
+      "what_happens": "达人展示产品日常价格（50g正装单买100多），随后弹出电商APP界面显示实付价109元包含多件赠品，形成巨大的价格反差。",
+      "why_it_matters": "通过‘原价’与‘现价’的强烈对比，让用户直观感受到优惠力度，激发占便宜的心理，提升转化率。",
+      "evidence_timestamps": [
+        5.0,
+        6.0,
+        7.0
+      ],
+      "key_text_or_speech": [
+        "日常这瓶50克的正装单买就要100多了",
+        "现在是官旗拉新搞活动哈",
+        "到手一瓶正装啊才什么价"
+      ],
+      "visual_tactics_summary": [
+        "价格弹窗对比",
+        "赠品堆叠展示"
+      ],
+      "module_summary_for_generation": "在介绍产品时，务必先给出一个较高的市场参考价，再引出当前的促销机制，并用直观的UI或图表展示优惠幅度，强化‘超值’感知。"
+    },
+    {
+      "module_id": "m_proof",
+      "module_name": "IngredientProof",
+      "module_name_cn": "成分背书",
+      "module_role": "trust_building",
+      "what_happens": "画面切换至产品特写，达人依次展示并讲解核心成分：青蒿油AN+、复合保湿精粹、多重仿生养肤因子，并配以悬浮文字卡片说明功效。",
+      "why_it_matters": "针对敏感肌和油痘肌人群，专业的成分解析能建立产品的科学性和安全性信任，消除用户对‘猛药’伤皮肤的顾虑。",
+      "evidence_timestamps": [
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0
+      ],
+      "key_text_or_speech": [
+        "核心是青蒿油AN+",
+        "搭配复合保湿精粹",
+        "还有多重仿生养肤因子"
+      ],
+      "visual_tactics_summary": [
+        "成分卡片悬浮展示",
+        "微距产品包装特写"
+      ],
+      "module_summary_for_generation": "将复杂的成分表转化为简单的视觉卡片，配合达人的口语化解说，重点突出对特定肌肤问题（如泛红、闭口）的针对性功效。"
+    },
+    {
+      "module_id": "m_demo",
+      "module_name": "UsageDemo",
+      "module_name_cn": "使用演示",
+      "module_role": "sensory_proof",
+      "what_happens": "达人挤出冰淇淋质地的膏体，在手心揉搓产生绵密泡沫，上脸按摩清洗，最后展示洗净后水润不紧绷的皮肤状态。",
+      "why_it_matters": "通过触觉（丝滑）、视觉（绵密泡沫）和结果（水润肌肤）的多重感官验证，让用户想象自己使用的舒适体验，增强购买欲望。",
+      "evidence_timestamps": [
+        30.0,
+        31.0,
+        32.0,
+        33.0,
+        36.0,
+        37.0
+      ],
+      "key_text_or_speech": [
+        "冰淇淋的质地超丝滑哈",
+        "挤点呢就能搓出绵密的泡沫",
+        "洗完脸呢清爽不紧绷",
+        "水水润润的"
+      ],
+      "visual_tactics_summary": [
+        "泡沫制造爽感",
+        "质地微距特写",
+        "前后肤质对比暗示"
+      ],
+      "module_summary_for_generation": "演示环节要聚焦于‘质感’和‘即时效果’。特写膏体流动感和泡沫丰富度，洗脸后立刻展示皮肤的水光感，强调‘温和’与‘清洁’并存的特点。"
+    },
+    {
+      "module_id": "m_cta",
+      "module_name": "ScarcityCTA",
+      "module_name_cn": "稀缺催单",
+      "module_role": "conversion_push",
+      "what_happens": "达人再次强调限购规则（一个ID只能买一单），并指出错过就没有了，同时引导点击链接查看库存，催促观众立即行动。",
+      "why_it_matters": "利用损失厌恶心理（FOMO），通过限制购买数量和时效性，逼迫犹豫的用户立即下单，防止流失。",
+      "evidence_timestamps": [
+        12.0,
+        13.0,
+        43.0,
+        44.0,
+        45.0
+      ],
+      "key_text_or_speech": [
+        "就一个小缺点一个ID啊",
+        "只能买这么一单",
+        "错过真的就没有了",
+        "手慢了真的没有了"
+      ],
+      "visual_tactics_summary": [
+        "手机限购弹窗",
+        "手指指向镜头/链接"
+      ],
+      "module_summary_for_generation": "结尾必须明确告知限制条件（限购、限时、限量），并配合强烈的肢体语言（如指镜头、握拳）和紧迫的语气，直接引导点击购买链接。"
+    }
+  ],
+  "raw_element_mentions": [
+    {
+      "mention_id": "rm_001",
+      "module_id": "m_hook",
+      "element_type": "people",
+      "raw_description": "男达人穿着红色卫衣，戴着白色耳机，表情夸张地对着镜头说话。",
+      "tentative_name": "Host_Presenter",
+      "tentative_name_cn": "主持达人",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "我老婆说我穷疯了",
+      "evidence_timestamps": [
+        0.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "hook",
+      "generation_value": "可迁移",
+      "notes": "达人的形象亲和且带有生活气息，适合推广日用消费品。"
+    },
+    {
+      "mention_id": "rm_002",
+      "module_id": "m_price_anchor",
+      "element_type": "prop",
+      "raw_description": "手机屏幕录屏，显示电商购买页面，标注‘实付¥109’和‘已选 洁面[50g*1支]’。",
+      "tentative_name": "Price_Screenshot",
+      "tentative_name_cn": "价格截图",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "实付 ¥109",
+      "evidence_timestamps": [
+        6.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "proof",
+      "generation_value": "可迁移",
+      "notes": "真实的交易界面截图比单纯的口播更有说服力。"
+    },
+    {
+      "mention_id": "rm_003",
+      "module_id": "m_proof",
+      "element_type": "text_speech",
+      "raw_description": "画面上方出现绿色背景的悬浮卡片，文字为‘青蒿油AN+ 全链路直击敏感泛红因子’。",
+      "tentative_name": "Ingredient_Card",
+      "tentative_name_cn": "成分卡片",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "青蒿油AN+ 全链路直击敏感泛红因子",
+      "evidence_timestamps": [
+        18.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "proof",
+      "generation_value": "可迁移",
+      "notes": "动态悬浮卡片是展示复杂信息的标准高效方式。"
+    },
+    {
+      "mention_id": "rm_004",
+      "module_id": "m_demo",
+      "element_type": "visual_tactic",
+      "raw_description": "达人双手在脸上揉搓出大量白色细腻泡沫，覆盖全脸。",
+      "tentative_name": "Foam_Demo",
+      "tentative_name_cn": "泡沫演示",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "挤点呢就能搓出绵密的泡沫",
+      "evidence_timestamps": [
+        32.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "demo",
+      "generation_value": "高价值",
+      "notes": "丰富的泡沫量是衡量洁面产品起泡能力的重要视觉指标。"
+    },
+    {
+      "mention_id": "rm_005",
+      "module_id": "m_cta",
+      "element_type": "prop",
+      "raw_description": "手机屏幕录屏，显示商品规格页，中间有醒目的黑色圆角矩形标签‘限购1件’。",
+      "tentative_name": "Limit_Tag",
+      "tentative_name_cn": "限购标签",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "限购1件",
+      "evidence_timestamps": [
+        13.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "cta",
+      "generation_value": "可迁移",
+      "notes": "明确的限购标识能有效制造稀缺感。"
+    },
+    {
+      "mention_id": "rm_006",
+      "module_id": "m_demo",
+      "element_type": "product",
+      "raw_description": "浅绿色软管包装的洗面奶被挤压，露出白色膏体。",
+      "tentative_name": "Product_Tube",
+      "tentative_name_cn": "产品软管",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "冰淇淋的质地超丝滑哈",
+      "evidence_timestamps": [
+        30.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "demo",
+      "generation_value": "低价值",
+      "notes": "包装颜色和品牌Logo需替换为自有品牌。"
+    },
+    {
+      "mention_id": "rm_007",
+      "module_id": "m_hook",
+      "element_type": "text_speech",
+      "raw_description": "屏幕下方出现白色字幕‘我老婆说我穷疯了’。",
+      "tentative_name": "Subtitle_Hook",
+      "tentative_name_cn": "字幕钩子",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "我老婆说我穷疯了",
+      "evidence_timestamps": [
+        0.5
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "hook",
+      "generation_value": "可迁移",
+      "notes": "关键帧话术需要醒目字体和高对比度配色。"
+    }
+  ],
+  "frame_requests": [
+    {
+      "frame_request_id": "fr_001",
+      "module_id": "m_hook",
+      "timestamp_sec": 0.5,
+      "frame_role": "visual_tactic_evidence",
+      "what_to_capture": "达人夸张惊讶的表情，手持三盒绿色产品，背景为浴室木门。",
+      "visual_tactic": "夸张面部表情 + 产品堆叠",
+      "why_this_frame": "完美展示了开头的戏剧性钩子，人物情绪饱满，产品露出清晰。",
+      "avoid_similar_reason": "区别于后续平静的讲解画面，此帧情绪张力最强。",
+      "related_mentions": [
+        "rm_001",
+        "rm_007"
+      ]
+    },
+    {
+      "frame_request_id": "fr_004",
+      "module_id": "m_demo",
+      "timestamp_sec": 31.0,
+      "frame_role": "visual_tactic_evidence",
+      "what_to_capture": "手部特写，浅绿色软管挤出白色膏体，背景是摆放着香水瓶的梳妆台。",
+      "visual_tactic": "质地微距特写",
+      "why_this_frame": "展示了‘冰淇淋质地’的卖点，细节清晰。",
+      "avoid_similar_reason": "专注于膏体质地，与其他洗脸动作帧区分开。",
+      "related_mentions": [
+        "rm_006"
+      ]
+    },
+    {
+      "frame_request_id": "fr_002",
+      "module_id": "m_price_anchor",
+      "timestamp_sec": 6.0,
+      "frame_role": "offer_evidence",
+      "what_to_capture": "手机屏幕上的购买页面特写，突出‘实付¥109’的价格标签。",
+      "visual_tactic": "价格弹窗刺激",
+      "why_this_frame": "直观展示了价格优势，是转化的核心证据。",
+      "avoid_similar_reason": "这是唯一展示具体价格数字的画面。",
+      "related_mentions": [
+        "rm_002"
+      ]
+    },
+    {
+      "frame_request_id": "fr_006",
+      "module_id": "m_demo",
+      "timestamp_sec": 37.0,
+      "frame_role": "result_evidence",
+      "what_to_capture": "达人洗完脸后，皮肤看起来水润光泽，用手轻拍脸颊，面带微笑。",
+      "visual_tactic": "前后效果对比暗示",
+      "why_this_frame": "展示了使用后的理想皮肤状态，激发向往感。",
+      "avoid_similar_reason": "代表最终的使用效果，区别于过程中的泡沫画面。",
+      "related_mentions": []
+    },
+    {
+      "frame_request_id": "fr_005",
+      "module_id": "m_cta",
+      "timestamp_sec": 13.0,
+      "frame_role": "offer_evidence",
+      "what_to_capture": "手机屏幕上的商品详情页，中间有一个显眼的‘限购1件’黑色标签。",
+      "visual_tactic": "限购标签视觉触发",
+      "why_this_frame": "明确了购买限制，制造紧迫感的关键画面。",
+      "avoid_similar_reason": "专门展示限购规则，与其他价格截图不同。",
+      "related_mentions": [
+        "rm_005"
+      ]
+    },
+    {
+      "frame_request_id": "fr_003",
+      "module_id": "m_proof",
+      "timestamp_sec": 18.5,
+      "frame_role": "proof",
+      "what_to_capture": "达人脸上涂满白色泡沫正在洗脸，上方悬浮着‘青蒿油AN+’的绿色成分卡片。",
+      "visual_tactic": "成分卡片悬浮 + 使用场景",
+      "why_this_frame": "结合了实际使用动作和专业成分背书，信息量大。",
+      "avoid_similar_reason": "既有动作又有图文信息，不同于单纯的产品特写。",
+      "related_mentions": [
+        "rm_003"
+      ]
+    }
+  ],
+  "transfer_pattern_records": [
+    {
+      "pattern_id": "pt_001",
+      "pattern_type": "strategy_pattern",
+      "pattern_name": "Storytelling_Price_Reveal",
+      "pattern_name_cn": "故事引入+价格揭秘",
+      "description": "先用一个与生活相关的有趣小故事或夸张场景作为开头吸引流量，紧接着揭示产品的巨大价格优势，形成强烈反差。",
+      "source_modules": [
+        "m_hook",
+        "m_price_anchor"
+      ],
+      "source_mentions": [
+        "rm_001",
+        "rm_002"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "寻找自家产品与用户生活的连接点（如省钱、变美、解决尴尬），用轻松幽默的方式讲出来，然后立刻亮出底价或优惠。",
+      "non_transferable_parts": [
+        "具体的‘穷疯了’话术",
+        "竞品品牌ARMYOO",
+        "红色的卫衣"
+      ]
+    },
+    {
+      "pattern_id": "pt_002",
+      "pattern_type": "visual_pattern",
+      "pattern_name": "Floating_Ingredient_Cards",
+      "pattern_name_cn": "悬浮成分卡片",
+      "description": "在演示产品使用时，通过动态悬浮卡片的形式，逐条列出核心成分及其功效，既不打断观看流，又强化了专业度。",
+      "source_modules": [
+        "m_proof"
+      ],
+      "source_mentions": [
+        "rm_003"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "制作一套统一的成分科普模板，包含图标、关键词和简短功效说明，在视频中段自然浮现。",
+      "non_transferable_parts": [
+        "青蒿油AN+的具体文案",
+        "绿色的配色方案"
+      ]
+    },
+    {
+      "pattern_id": "pt_003",
+      "pattern_type": "offer_pattern",
+      "pattern_name": "Single_Order_Limit",
+      "pattern_name_cn": "单人限购策略",
+      "description": "在促销结尾明确告知‘每个ID限购一件’，利用稀缺心理促使观众尽快决策，避免比价或拖延。",
+      "source_modules": [
+        "m_cta"
+      ],
+      "source_mentions": [
+        "rm_005"
+      ],
+      "transferability": "medium",
+      "how_to_adapt_for_own_brand": "根据库存情况设置合理的限购数量（如每人限领一份、前100名等），并在UI设计上高亮显示该限制。",
+      "non_transferable_parts": [
+        "限购1件的具体数字",
+        "抖音平台的UI样式"
+      ]
+    }
+  ],
+  "ingestion_status": {
+    "status": "pass",
+    "warnings": [],
+    "extraction_warnings": []
+  }
+}
