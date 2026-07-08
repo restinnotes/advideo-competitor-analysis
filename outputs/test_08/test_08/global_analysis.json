@@ -1,0 +1,420 @@
+{
+  "schema_version": "competitor_global_image_v1",
+  "video_record": {
+    "video_id": "vid_armiyo_001",
+    "observed_brand_or_product_text": "ARMIYO 安敏优 青蒿修红棒",
+    "product_category": "护肤/精华/修护棒",
+    "main_product": "安敏优青蒿修红棒",
+    "duration_sec": 72.352993,
+    "language": "zh",
+    "overall_strategy_summary": "采用‘痛点共鸣 + 明星背书 + 成分科普 + 超值赠品’的组合策略。视频前半段通过展示多种皮肤问题（痘痘、泛红、暗沉）引发焦虑，中间由男明星代言建立信任并解释核心成分功效，后半段通过密集的赠品堆叠和价格锚定制造‘不买就亏’的紧迫感，强力推动即时转化。",
+    "strategy_pattern": "痛点钩子 -> 明星背书 -> 成分/机理证明 -> 效果见证 -> 超值福利逼单",
+    "target_audience": [
+      "有痘肌/闭口困扰女性",
+      "敏感肌/泛红人群",
+      "熬夜暗沉肌肤人群",
+      "追求性价比的年轻消费者"
+    ],
+    "main_pain_points": [
+      "长痘长闭口",
+      "皮肤泛红敏感",
+      "熬夜导致暗沉",
+      "皮肤屏障受损",
+      "单纯保湿无效"
+    ],
+    "main_selling_points": [
+      "高纯度青蒿油AN+",
+      "光甘草定色满醇",
+      "修护维稳",
+      "质地滋润清爽",
+      "直达皮肤底层"
+    ],
+    "main_offer": "买一盒送一盒同款 + 送20支修红棒 + 送2张代旭小卡 + 送3枚吧唧 = 到手55件",
+    "main_visual_tactics": [
+      "脸部问题特写制造焦虑",
+      "微距质地展示爽感",
+      "大量赠品堆叠制造超值感",
+      "明星同款字样背书",
+      "前后对比展示效果"
+    ],
+    "creative_summary_for_generation": "建议采用‘多场景痛点展示 + 权威背书 + 密集赠品轰炸’的结构。先通过特写镜头展示皮肤问题引发共鸣，再引入代言人或专家进行成分讲解建立专业度，最后通过快速剪辑展示所有赠品实物，配合激昂的促销话术完成转化。",
+    "created_by": "global_agent",
+    "schema_version": "competitor_global_image_v1"
+  },
+  "module_records": [
+    {
+      "module_id": "m_hook",
+      "module_name": "pain_point_hook",
+      "module_name_cn": "痛点钩子模块",
+      "module_role": "attention_hook",
+      "what_happens": "视频开篇通过CG特效人脸和多位素人面部特写，集中展示痘痘、闭口、泛红、暗沉等皮肤问题，配合文案直接点出用户痛点，制造焦虑感以吸引注意力。",
+      "why_it_matters": "精准筛选目标受众，利用用户对皮肤问题的焦虑情绪迅速抓住眼球，为后续产品出场做铺垫。",
+      "evidence_timestamps": [
+        0,
+        8,
+        9,
+        10
+      ],
+      "key_text_or_speech": [
+        "女人有痘痘就很显脏的",
+        "长痘长闭口的姐妹",
+        "但你要是泛红长痘还熬夜暗沉的",
+        "一定要尽早用起来"
+      ],
+      "visual_tactics_summary": [
+        "脸部问题特写",
+        "CG特效人脸",
+        "素颜状态展示"
+      ],
+      "module_summary_for_generation": "开头前5秒必须展示具体的皮肤痛点画面（如泛红、痘痘），配合扎心的文案，不要一上来就介绍产品，要先让用户觉得‘这就是在说我’。"
+    },
+    {
+      "module_id": "m_proof",
+      "module_name": "star_endorsement_proof",
+      "module_name_cn": "明星背书与成分证明",
+      "module_role": "trust_building",
+      "what_happens": "男明星（代旭）出镜手持产品，强调‘明星推荐’身份。随后切换至成分动画和真人演示，讲解‘高纯度青蒿油AN+’和‘光甘草定’等核心成分如何修护屏障、褪红维稳。",
+      "why_it_matters": "利用明星效应降低用户防备心理，同时通过专业的成分解析提升产品的科学可信度，解决‘为什么有效’的疑虑。",
+      "evidence_timestamps": [
+        27,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "key_text_or_speech": [
+        "如果不是明星推荐...",
+        "高纯度青蒿油AN+",
+        "搭配光甘草顶",
+        "修护维稳稳固表皮屏障"
+      ],
+      "visual_tactics_summary": [
+        "明星同款字样",
+        "成分动画演示",
+        "质地微距特写"
+      ],
+      "module_summary_for_generation": "需要一位形象良好的代言人出镜背书，并配合简单的MG动画或文字卡片解释核心成分，将复杂的护肤原理通俗化。"
+    },
+    {
+      "module_id": "m_demo",
+      "module_name": "usage_demonstration",
+      "module_name_cn": "使用演示模块",
+      "module_role": "product_evidence",
+      "what_happens": "多位不同风格的女性用户在居家、浴室等场景中，演示涂抹修红棒的过程。重点展示产品水润的质地、易吸收的特点以及使用后皮肤呈现的水光感。",
+      "why_it_matters": "通过真实的用户证言和使用过程，消除用户对质地油腻、难吸收的顾虑，直观展示产品带来的即时肤感改善。",
+      "evidence_timestamps": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "key_text_or_speech": [
+        "它只有你皮肤屏障薄...",
+        "上脸是质地滋润清爽",
+        "脸上自带水光感",
+        "感觉每个毛孔都呼吸了"
+      ],
+      "visual_tactics_summary": [
+        "涂抹动作特写",
+        "手部试质地",
+        "使用前后面部光泽对比"
+      ],
+      "module_summary_for_generation": "选取3-4位不同妆容/发型的女性，重复‘挤出-涂抹-推开’的标准动作，重点捕捉液体流动和皮肤变亮的瞬间，强调‘清爽不粘腻’。"
+    },
+    {
+      "module_id": "m_offer",
+      "module_name": "value_stacking_offer",
+      "module_name_cn": "超值赠品堆叠模块",
+      "module_role": "conversion_push",
+      "what_happens": "视频后半段节奏加快，快速展示购买一盒产品所能获得的所有赠品:第二盒同款、20支独立装、明星照片卡、徽章等。最后定格在摆满赠品的桌面上，强调‘拍1到手55件’。",
+      "why_it_matters": "通过极致的赠品数量（55件）和视觉上的‘堆积感’，制造巨大的价值错觉，让用户觉得现在的价格极其划算，产生‘现在不买就亏了’的心理。",
+      "evidence_timestamps": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "key_text_or_speech": [
+        "但是这一次安敏优携手代旭开启宠粉福利",
+        "今天买一盒...再送你一盒...",
+        "再送你20支修红棒",
+        "再送你2张代旭小卡",
+        "还送你3枚代旭同款吧唧",
+        "拍1到手55件"
+      ],
+      "visual_tactics_summary": [
+        "赠品堆叠展示",
+        "数量夸张化（55件）",
+        "周边实物特写"
+      ],
+      "module_summary_for_generation": "这是转化的关键。必须用快节奏剪辑将所有赠品一一过一遍，最后用一个全景镜头展示满满当当的桌面，配合‘到手XX件’的大字报，疯狂刺激下单欲望。"
+    }
+  ],
+  "raw_element_mentions": [
+    {
+      "mention_id": "rm_001",
+      "module_id": "m_hook",
+      "element_type": "people",
+      "raw_description": "CG生成的半透明玻璃质感女性人脸，眼部特写。",
+      "tentative_name": "cgi_face",
+      "tentative_name_cn": "CG特效人脸",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "00:00 画面出现一个具有未来感的玻璃质感人脸，眼神忧郁。",
+      "evidence_timestamps": [
+        0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "visual_trigger",
+      "generation_value": "可迁移",
+      "notes": "用于开场制造视觉冲击，暗示皮肤问题的严重性或科技感。"
+    },
+    {
+      "mention_id": "rm_002",
+      "module_id": "m_hook",
+      "element_type": "visual_tactic",
+      "raw_description": "真实女性面部泛红、长痘的特写镜头。",
+      "tentative_name": "skin_pain_closeup",
+      "tentative_name_cn": "皮肤痛点特写",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "00:08 戴眼镜女性脸颊泛红且有痘；00:09 另一位女性脸颊泛红。",
+      "evidence_timestamps": [
+        8,
+        9
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "pain_evidence",
+      "generation_value": "可迁移",
+      "notes": "直接展示问题皮肤，引发目标用户共鸣。"
+    },
+    {
+      "mention_id": "rm_003",
+      "module_id": "m_proof",
+      "element_type": "people",
+      "raw_description": "身穿灰色西装的男明星坐在桌前，手持产品。",
+      "tentative_name": "male_celebrity_host",
+      "tentative_name_cn": "男明星代言人",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "00:27 男明星代旭出镜，旁边有‘代旭同款’字样。",
+      "evidence_timestamps": [
+        27
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "trust_builder",
+      "generation_value": "不可直接迁移",
+      "notes": "需替换为我方品牌的合作达人或KOL。"
+    },
+    {
+      "mention_id": "rm_004",
+      "module_id": "m_proof",
+      "element_type": "visual_tactic",
+      "raw_description": "微距镜头下，白色管状物挤压出乳白色液体滴落在手背或水晶球上。",
+      "tentative_name": "texture_shot",
+      "tentative_name_cn": "质地微距展示",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "00:29 液体滴落形成完美液滴；00:31 液体拉丝展示粘稠度。",
+      "evidence_timestamps": [
+        29,
+        31
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "product_evidence",
+      "generation_value": "可迁移",
+      "notes": "通过微距镜头展示产品的质感和流动性，增加高级感。"
+    },
+    {
+      "mention_id": "rm_005",
+      "module_id": "m_offer",
+      "element_type": "prop",
+      "raw_description": "桌面上堆满了产品包装盒、独立包装、照片卡和徽章。",
+      "tentative_name": "gift_stack",
+      "tentative_name_cn": "赠品堆叠",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "01:09 木质托盘上摆放着两盒主品、多包赠品、多张小卡和徽章。",
+      "evidence_timestamps": [
+        69
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "value_trigger",
+      "generation_value": "可迁移",
+      "notes": "视觉化的‘量大’是促单的核心手段。"
+    },
+    {
+      "mention_id": "rm_006",
+      "module_id": "m_offer",
+      "element_type": "text_speech",
+      "raw_description": "屏幕下方出现大号黄色字体字幕:‘拍1到手55件’。",
+      "tentative_name": "offer_text_overlay",
+      "tentative_name_cn": "优惠大字报",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "01:09 醒目黄色字幕强调最终到手数量。",
+      "evidence_timestamps": [
+        69
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "cta_support",
+      "generation_value": "可迁移",
+      "notes": "数字化的利益点比文字描述更有冲击力。"
+    },
+    {
+      "mention_id": "rm_007",
+      "module_id": "m_demo",
+      "element_type": "action",
+      "raw_description": "女性用手指轻轻拍打脸颊，展示皮肤吸收后的光泽感。",
+      "tentative_name": "patting_action",
+      "tentative_name_cn": "拍打吸收动作",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "00:44 女性手指轻拍脸颊，皮肤呈现水光感。",
+      "evidence_timestamps": [
+        44
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "result_evidence",
+      "generation_value": "可迁移",
+      "notes": "展示“好吸收”、“不粘腻”的直观动作。"
+    }
+  ],
+  "frame_requests": [
+    {
+      "frame_request_id": "fr_001",
+      "module_id": "m_hook",
+      "timestamp_sec": 0,
+      "frame_role": "visual_tactic_evidence",
+      "what_to_capture": "CG玻璃质感人脸特写，表现皮肤问题的抽象概念。",
+      "visual_tactic": "CG特效人脸",
+      "why_this_frame": "作为开场，用非写实画面抓住眼球，暗示科技修护概念。",
+      "avoid_similar_reason": "避免选择后续真人出镜的帧，保持视觉差异。",
+      "related_mentions": [
+        "rm_001"
+      ]
+    },
+    {
+      "frame_request_id": "fr_002",
+      "module_id": "m_hook",
+      "timestamp_sec": 8,
+      "frame_role": "pain_evidence",
+      "what_to_capture": "戴眼镜女性满脸泛红和痘痘的真实面部特写。",
+      "visual_tactic": "脸部问题特写",
+      "why_this_frame": "最直观的痛点展示，引发有同样困扰用户的共鸣。",
+      "avoid_similar_reason": "区别于其他光滑皮肤的展示帧。",
+      "related_mentions": [
+        "rm_002"
+      ]
+    },
+    {
+      "frame_request_id": "fr_004",
+      "module_id": "m_demo",
+      "timestamp_sec": 29,
+      "frame_role": "product_evidence",
+      "what_to_capture": "微距镜头，白色管状物尖端挤出乳白色液体，悬停在透明水晶球上方即将滴落。",
+      "visual_tactic": "质地微距展示",
+      "why_this_frame": "极具美感的质地展示，体现产品的纯净和高级感。",
+      "avoid_similar_reason": "区别于普通的手背试涂帧。",
+      "related_mentions": [
+        "rm_004"
+      ]
+    },
+    {
+      "frame_request_id": "fr_005",
+      "module_id": "m_offer",
+      "timestamp_sec": 69,
+      "frame_role": "offer_evidence",
+      "what_to_capture": "俯拍视角，木质托盘上整齐摆放着两盒主品、大量独立包装、照片卡和徽章，画面饱满。",
+      "visual_tactic": "赠品堆叠展示",
+      "why_this_frame": "视觉上最大化‘多’的概念，证明‘55件’的真实性。",
+      "avoid_similar_reason": "这是赠品最全、最密集的展示时刻。",
+      "related_mentions": [
+        "rm_005"
+      ]
+    },
+    {
+      "frame_request_id": "fr_003",
+      "module_id": "m_proof",
+      "timestamp_sec": 27,
+      "frame_role": "generic_talking_head",
+      "what_to_capture": "男明星身穿灰西装坐在桌前，手持产品微笑看向镜头。",
+      "visual_tactic": "明星同款字样",
+      "why_this_frame": "确立品牌信任度和明星背书的核心画面。",
+      "avoid_similar_reason": "这是唯一的男性代言人静态展示帧。",
+      "related_mentions": [
+        "rm_003"
+      ]
+    }
+  ],
+  "transfer_pattern_records": [
+    {
+      "pattern_id": "pt_001",
+      "pattern_type": "strategy_pattern",
+      "pattern_name": "Pain-Trust-Offer",
+      "pattern_name_cn": "痛点-信任-福利三段式",
+      "description": "先通过痛点画面引发焦虑，再用权威（明星/成分）建立信任，最后用超大赠品力度促成下单。",
+      "source_modules": [
+        "m_hook",
+        "m_proof",
+        "m_offer"
+      ],
+      "source_mentions": [
+        "rm_002",
+        "rm_003",
+        "rm_005"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "保留此结构，替换为我方的痛点素材（如粗糙、脱皮）、我方合作的达人/KOL、以及我方实际的赠品方案。确保赠品数量在视觉上看起来足够多。",
+      "non_transferable_parts": [
+        "具体品牌名ARMIYO",
+        "明星代旭",
+        "具体的赠品内容（吧唧/小卡）"
+      ]
+    },
+    {
+      "pattern_id": "pt_002",
+      "pattern_type": "visual_pattern",
+      "pattern_name": "MacroTextureBeauty",
+      "pattern_name_cn": "微距质地美学",
+      "description": "使用微距镜头拍摄产品挤出的瞬间，配合柔和光线和干净的背景，营造高端护肤的质感。",
+      "source_modules": [
+        "m_demo"
+      ],
+      "source_mentions": [
+        "rm_004"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "无论什么质地的护肤品（乳液、精华、膏体），都拍摄其流动、延展或滴落的微距特写，强调视觉上的舒适感。",
+      "non_transferable_parts": [
+        "特定的乳白色液体形态"
+      ]
+    }
+  ],
+  "ingestion_status": {
+    "status": "pass",
+    "warnings": [],
+    "extraction_warnings": []
+  }
+}
