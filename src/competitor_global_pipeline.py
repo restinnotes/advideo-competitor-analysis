@@ -227,8 +227,10 @@ def _validate_global_analysis(data: dict) -> tuple[str, list[str]]:
 
     # 检查禁用字段
     data_str = json.dumps(data)
+    forbidden_found = []
     for field in FORBIDDEN_FIELDS:
         if field in data_str:
+            forbidden_found.append(field)
             warnings.append(f"发现禁用字段: {field}")
 
     # 检查 evidence_strength
@@ -248,7 +250,43 @@ def _validate_global_analysis(data: dict) -> tuple[str, list[str]]:
     if not has_visual_tactic:
         warnings.append("raw_element_mentions 中缺少 visual_tactic 类型")
 
-    status = "fail" if any("缺失" in w for w in warnings) else "pass"
+    # 检查引用关系
+    module_ids = {m.get("module_id") for m in data.get("module_records", [])}
+    mention_ids = {m.get("mention_id") for m in mentions}
+
+    # 检查 raw_element_mentions.module_id
+    for mention in mentions:
+        mid = mention.get("module_id", "")
+        if mid and mid not in module_ids:
+            warnings.append(f"raw_element_mentions.module_id 不存在: {mid}")
+
+    # 检查 frame_requests.module_id
+    for req in data.get("frame_requests", []):
+        mid = req.get("module_id", "")
+        if mid and mid not in module_ids:
+            warnings.append(f"frame_requests.module_id 不存在: {mid}")
+
+    # 检查 frame_requests.related_mentions
+    for req in data.get("frame_requests", []):
+        for rid in req.get("related_mentions", []):
+            if rid and rid not in mention_ids:
+                warnings.append(f"frame_requests.related_mentions 不存在: {rid}")
+
+    # 检查 transfer_pattern_records.source_modules
+    for pattern in data.get("transfer_pattern_records", []):
+        for mid in pattern.get("source_modules", []):
+            if mid and mid not in module_ids:
+                warnings.append(f"transfer_pattern_records.source_modules 不存在: {mid}")
+
+    # 检查 transfer_pattern_records.source_mentions
+    for pattern in data.get("transfer_pattern_records", []):
+        for rid in pattern.get("source_mentions", []):
+            if rid and rid not in mention_ids:
+                warnings.append(f"transfer_pattern_records.source_mentions 不存在: {rid}")
+
+    # 判断 status
+    has_critical = any("缺失" in w for w in warnings) or forbidden_found or not has_visual_tactic
+    status = "fail" if has_critical else "pass"
     return status, warnings
 
 
@@ -505,25 +543,7 @@ class CompetitorGlobalPipeline:
 
         # ── Step 4: 校验 ──
         status, warnings = _validate_global_analysis(global_analysis)
-        global_analysis["ingestion_status"] = {
-            "status": status,
-            "warnings": warnings,
-        }
-
-        # 保存 global_analysis.json
-        save_json(global_analysis, out / "global_analysis.json")
-        logger.info(f"[CompetitorGlobal] ingestion_status: {status}")
-
-        if status == "fail":
-            logger.error(f"[CompetitorGlobal] 校验失败: {warnings}")
-            self._save_fail_outputs(out, video_id, "; ".join(warnings), global_analysis)
-            return {
-                "status": "fail",
-                "reason": "; ".join(warnings),
-                "global_analysis_path": str(out / "global_analysis.json"),
-                "output_dir": str(out),
-            }
-
+        
         # ── Step 5: 去重 frame_requests ──
         frame_requests = global_analysis.get("frame_requests", [])
         frame_requests = _deduplicate_frame_requests(frame_requests, max_frames=10)
@@ -534,6 +554,7 @@ class CompetitorGlobalPipeline:
         video_path_obj = Path(video_path) if video_path else None
         frame_records: list[dict] = []
         extraction_warnings: list[str] = []
+        frame_index = 0
 
         for req in frame_requests:
             module_id = req.get("module_id", "unknown")
@@ -544,8 +565,9 @@ class CompetitorGlobalPipeline:
             module_dir = keyframes_dir / _safe_slug(module_id)
             module_dir.mkdir(parents=True, exist_ok=True)
 
-            # 生成文件名
-            frame_filename = f"frame_{frame_request_id}.jpg"
+            # 生成安全文件名（顺序编号）
+            frame_index += 1
+            frame_filename = f"frame_{frame_index:03d}.jpg"
             frame_path = module_dir / frame_filename
             relative_path = f"keyframes/{_safe_slug(module_id)}/{frame_filename}"
 
@@ -564,8 +586,33 @@ class CompetitorGlobalPipeline:
 
         logger.info(f"[CompetitorGlobal] 成功抽取 {len(frame_records)} 张关键帧")
 
-        # ── Step 7: 生成 records ──
-        video_record = _build_video_record(global_analysis, video_id, actual_duration or 0)
+        # ── Step 7: 写回 warnings 到 global_analysis ──
+        if "ingestion_status" not in global_analysis:
+            global_analysis["ingestion_status"] = {}
+        global_analysis["ingestion_status"]["status"] = status
+        global_analysis["ingestion_status"]["warnings"] = warnings
+        global_analysis["ingestion_status"]["extraction_warnings"] = extraction_warnings
+
+        # 保存 global_analysis.json（在去重和抽帧之后）
+        save_json(global_analysis, out / "global_analysis.json")
+        logger.info(f"[CompetitorGlobal] ingestion_status: {status}")
+
+        if status == "fail":
+            logger.error(f"[CompetitorGlobal] 校验失败: {warnings}")
+            self._save_fail_outputs(out, video_id, "; ".join(warnings), global_analysis)
+            return {
+                "status": "fail",
+                "reason": "; ".join(warnings),
+                "global_analysis_path": str(out / "global_analysis.json"),
+                "output_dir": str(out),
+            }
+
+        # ── Step 8: 生成 records ──
+        # 使用 actual_duration 或 global_analysis.video_record.duration_sec 或 0
+        video_record_duration = actual_duration
+        if video_record_duration is None and "video_record" in global_analysis:
+            video_record_duration = global_analysis["video_record"].get("duration_sec")
+        video_record = _build_video_record(global_analysis, video_id, video_record_duration or 0)
         self._write_jsonl(records_dir / "video_record.jsonl", [video_record])
 
         module_records = [_build_module_record(m, video_id) for m in global_analysis.get("module_records", [])]
@@ -582,16 +629,23 @@ class CompetitorGlobalPipeline:
         transfer_patterns = [_build_transfer_pattern_record(p, video_id) for p in global_analysis.get("transfer_pattern_records", [])]
         self._write_jsonl(records_dir / "transfer_pattern_record.jsonl", transfer_patterns)
 
-        # ── Step 8: final_result.json ──
+        # ── Step 9: final_result.json ──
+        # 检查是否有 visual_tactic
+        has_visual_tactic = any(m.get("element_type") == "visual_tactic" for m in global_analysis.get("raw_element_mentions", []))
+        
         final_result = {
             "video_id": video_id,
+            "status": "pass",
             "global_analysis_path": "global_analysis.json",
             "records_dir": "records",
             "keyframes_dir": "keyframes",
             "module_count": len(module_records),
             "raw_element_mention_count": len(element_mentions),
-            "frame_count": len(frame_records),
+            "frame_request_count": len(frame_requests),
+            "frames_extracted": len(frame_records),
             "transfer_pattern_count": len(transfer_patterns),
+            "has_visual_tactic": has_visual_tactic,
+            "warnings": warnings + extraction_warnings,
             "summary": global_analysis.get("video_record", {}).get("overall_strategy_summary", ""),
         }
         save_json(final_result, out / "final_result.json")

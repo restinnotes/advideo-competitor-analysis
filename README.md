@@ -18,9 +18,9 @@ final_result.json 和 clip_index.json 只做索引
 后续可用于广告套路聚类、视觉元素库、AIGC 参考片段
 ```
 
-## 竞品广告分析模式
+## 竞品广告分析模式（推荐）
 
-新增 `competitor_image_analysis` 模式，用于分析竞品广告视频：
+`competitor_image_analysis` 是当前推荐模式，用于分析竞品广告视频：
 
 ```
 竞品视频输入 Qwen-Omni
@@ -36,7 +36,11 @@ final_result.json 和 clip_index.json 只做索引
 输出可入库的结构化洞察
 ```
 
-此模式不生成 clip.mp4，不切分视频，只输出结构化分析记录。
+**此模式特点：**
+- 不切 clip，不生成 clip.mp4
+- 不使用 shared_memory
+- 不输出 confidence 字段
+- 输出 global_analysis.json + records/ + keyframes/
 
 ## 核心概念
 
@@ -145,16 +149,17 @@ python main.py competitor_image_analysis \
 | 参数 | 必填 | 说明 |
 |------|------|------|
 | `--video-id` | 是 | 视频唯一标识 |
-| `--video-url` | 是 | 公网视频 URL（百炼模型用） |
-| `--video-path` | 否 | 本地视频路径（ffmpeg 切 clip/keyframe 用） |
+| `--video-url` | 至少一个 | 公网视频 URL（百炼模型用） |
+| `--video-path` | 至少一个 | 本地视频路径（ffmpeg 抽关键帧用） |
 | `--output-dir` | 否 | 输出目录（默认 ./outputs） |
 | `--model` | 否 | qwen3.5-omni-plus 或 qwen3.5-omni-flash |
 
 ### 重要说明
 
 - `video_url` 是给 Qwen-Omni 分析的，必须公网可访问
-- `video_path` 是给 ffmpeg 本地切 clip/keyframe 的
-- 没有 `video_path` 时，只会输出 JSON，不会生成 clips
+- `video_path` 是给 ffmpeg 本地抽关键帧的
+- 至少需要提供 `video_url` 或 `video-path` 之一
+- 没有 `video_path` 时，只会输出 JSON，不会生成关键帧
 - 如果百炼无法访问 video_url，需要先把视频上传到 OSS 或公网可访问地址
 
 ## 输出结构
@@ -259,9 +264,9 @@ ad-video-pipeline/
 **timestamp 不准**
 - 模型时间戳是估算值，可能有偏差
 
-**ffmpeg 切 clip 失败**
+**ffmpeg 抽关键帧失败**
 - 确认 ffmpeg 已安装: `ffmpeg -version`
 - 确认视频路径正确
 
 **没有 video_path**
-- 只输出 JSON，不切 clip 和 keyframe
+- 只输出 JSON，不抽关键帧

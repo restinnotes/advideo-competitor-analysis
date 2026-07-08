@@ -26,8 +26,8 @@ def main() -> int:
     parser.add_argument("--model", help="qwen3.5-omni-plus 或 qwen3.5-omni-flash")
     args = parser.parse_args()
 
-    if not args.video_url:
-        print("错误: 必须提供 --video-url", file=sys.stderr)
+    if not args.video_url and not args.video_path:
+        print("错误: 必须提供 --video-url 或 --video-path 至少一个", file=sys.stderr)
         return 1
 
     out = Path(args.output_dir) / args.video_id
