@@ -26,6 +26,7 @@ def main() -> None:
             
             final_path = nested_dir / "final_result.json"
             global_analysis_path = nested_dir / "global_analysis.json"
+            frame_record_path = nested_dir / "records" / "frame_record.jsonl"
             
             if final_path.exists():
                 with open(final_path, "r", encoding="utf-8") as f:
@@ -36,9 +37,18 @@ def main() -> None:
                     with open(global_analysis_path, "r", encoding="utf-8") as f:
                         global_analysis = json.load(f)
                 
+                frame_records = []
+                if frame_record_path.exists():
+                    with open(frame_record_path, "r", encoding="utf-8") as f:
+                        for line in f:
+                            line = line.strip()
+                            if line:
+                                frame_records.append(json.loads(line))
+                
                 results[nested_dir.name] = {
                     "final_result": final_result,
-                    "global_analysis": global_analysis
+                    "global_analysis": global_analysis,
+                    "frame_records": frame_records
                 }
 
     template = template_path.read_text(encoding="utf-8")

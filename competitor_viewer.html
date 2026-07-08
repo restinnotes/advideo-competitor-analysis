@@ -1472,6 +1472,7 @@
             const warnings = ingestionStatus.warnings || [];
             const extractionWarnings = ingestionStatus.extraction_warnings || [];
             const finalResult = data.final_result || {};
+            const frameRecords = data.frame_records || [];
 
             let html = '';
 
@@ -1554,17 +1555,17 @@
             }
 
             // 关键帧
-            if (frameRequests.length) {
-                html += '<div class="section"><h2>关键帧请求 (' + frameRequests.length + ' 个)</h2><div class="frame-grid">';
-                frameRequests.forEach(f => {
+            if (frameRecords.length) {
+                html += '<div class="section"><h2>关键帧 (' + frameRecords.length + ' 个)</h2><div class="frame-grid">';
+                frameRecords.forEach(f => {
+                    const imgPath = 'outputs/' + videoId + '/' + (f.image_path || '');
                     html += '<div class="frame-card">';
-                    html += '<img src="' + escHtml(videoId + '/' + f.image_path || '') + '" alt="' + escHtml(f.frame_request_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22><rect fill=%22%23f0f0f0%22 width=%22280%22 height=%22180%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
+                    html += '<img src="' + escHtml(imgPath) + '" alt="' + escHtml(f.frame_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22180%22><rect fill=%22%23f0f0f0%22 width=%22280%22 height=%22180%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
                     html += '<div class="frame-info">';
-                    html += '<h4>' + escHtml(f.frame_request_id) + '</h4>';
+                    html += '<h4>' + escHtml(f.frame_request_id || f.frame_id) + '</h4>';
                     html += '<p><span class="role">' + escHtml(f.frame_role || '-') + '</span> | ' + (f.timestamp_sec || 0).toFixed(1) + 's</p>';
-                    html += '<p><b>捕捉内容:</b> ' + escHtml(f.what_to_capture || '-') + '</p>';
+                    html += '<p><b>捕捉内容:</b> ' + escHtml(f.what_it_shows || '-') + '</p>';
                     html += '<p><b>视觉手法:</b> ' + escHtml(f.visual_tactic || '-') + '</p>';
-                    html += '<p><b>为什么选择:</b> ' + escHtml(f.why_this_frame || '-') + '</p>';
                     html += '</div></div>';
                 });
                 html += '</div></div>';
