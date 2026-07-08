@@ -114,6 +114,11 @@ def _repair_json(text: str) -> str:
             return candidate
         except json.JSONDecodeError:
             pass
+    # 修复单引号字符串（JSON 不允许单引号）
+    # 只在非 JSON 键名位置替换单引号为双引号
+    text = _fix_single_quotes(text)
+    # 修复中文冒号为英文冒号
+    text = _fix_chinese_colons(text)
     # close unclosed brackets
     opens: list[str] = []
     in_str = False
@@ -148,6 +153,47 @@ def _repair_json(text: str) -> str:
 def _clean_trailing_commas(text: str) -> str:
     text = re.sub(r",\s*}", "}", text)
     text = re.sub(r",\s*]", "]", text)
+    return text
+
+
+def _fix_single_quotes(text: str) -> str:
+    """修复 JSON 中的单引号字符串为双引号。"""
+    # 替换中文引号为普通引号
+    text = text.replace('\u2018', "'").replace('\u2019', "'")
+    text = text.replace('\u201c', '"').replace('\u201d', '"')
+    
+    # 处理数组中的单引号字符串
+    # 匹配数组中的单引号字符串模式
+    def fix_array_item(match):
+        content = match.group(1)
+        # 如果内容中包含单引号，需要转义
+        content = content.replace("'", "\\'")
+        return f'"{content}"'
+    
+    # 匹配数组元素中的单引号字符串
+    text = re.sub(r"(?<=\[|,)\s*'([^']*(?:'[^']*)*)'\s*(?=,|\])", fix_array_item, text)
+    
+    # 处理对象值中的单引号字符串
+    text = re.sub(r":\s*'([^']*)'", r': "\1"', text)
+    
+    # 修复嵌套双引号问题
+    # 在数组中，如果一个字符串内部有双引号，需要转义
+    def fix_nested_quotes_in_array(match):
+        content = match.group(1)
+        # 转义内部的双引号
+        content = content.replace('"', '\\"')
+        return f'"{content}"'
+    
+    # 匹配数组中已经修复为双引号但内部有未转义双引号的字符串
+    text = re.sub(r'(?<=\[|,)\s*"([^"]*(?:"[^"]*)*)"\s*(?=,|\])', fix_nested_quotes_in_array, text)
+    
+    return text
+
+
+def _fix_chinese_colons(text: str) -> str:
+    """修复 JSON 中的中文冒号为英文冒号。"""
+    # 替换中文冒号为英文冒号
+    text = text.replace('：', ':')
     return text
 
 

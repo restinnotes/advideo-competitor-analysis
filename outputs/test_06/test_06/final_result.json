@@ -1,0 +1,15 @@
+{
+  "video_id": "test_06",
+  "status": "pass",
+  "global_analysis_path": "global_analysis.json",
+  "records_dir": "records",
+  "keyframes_dir": "keyframes",
+  "module_count": 5,
+  "raw_element_mention_count": 7,
+  "frame_request_count": 6,
+  "frames_extracted": 6,
+  "transfer_pattern_count": 3,
+  "has_visual_tactic": true,
+  "warnings": [],
+  "summary": "采用‘痛点钩子 + 价格锚定 + 成分背书 + 稀缺促销’的组合策略。达人以夸张口吻制造焦虑，随即抛出极具诱惑力的低价机制，通过展示核心成分（青蒿油、仿生因子）建立专业信任，最后利用限购和紧迫感促成下单。"
+}

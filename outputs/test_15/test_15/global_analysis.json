@@ -1,0 +1,455 @@
+{
+  "schema_version": "competitor_global_image_v1",
+  "video_record": {
+    "video_id": "vid_armiyo_2026",
+    "observed_brand_or_product_text": "ARMIYO 安敏优 青蒿修红棒 2.0 特护次抛精华",
+    "product_category": "护肤/精华液",
+    "main_product": "安敏优青蒿修红棒2.0（次抛精华）",
+    "duration_sec": 87.67873,
+    "language": "zh",
+    "overall_strategy_summary": "采用‘痛点唤醒 + 明星背书 + 价格锚定 + 成分专业’的组合策略。通过展示旧水乳的无效与皮肤负担，引出产品作为替代方案；利用多位达人/明星口播建立信任；通过夸张的价格对比和赠品堆叠制造超值感；最后以成分（青蒿油AN+）强化专业度并催促下单。",
+    "strategy_pattern": "痛点钩子 -> 解决方案演示 -> 权威背书 -> 价格冲击 -> 稀缺CTA",
+    "target_audience": [
+      "敏感肌人群",
+      "有痘印/泛红困扰者",
+      "追求高效护肤的懒人",
+      "预算有限但追求效果的年轻女性"
+    ],
+    "main_pain_points": [
+      "传统水乳无法修红祛痘",
+      "加重皮肤负担",
+      "卡粉起皮",
+      "换季过敏、晒后泛红、熬夜长痘"
+    ],
+    "main_selling_points": [
+      "四效合一（修红、祛痘、祛黄、保湿）",
+      "一次涂抹替代全套流程",
+      "含昆药集团50年专研青蒿油AN+",
+      "流动性强、吸收快、哑光感",
+      "素颜可直接出门"
+    ],
+    "main_offer": "春日福利：拍一发55件，总价369元（原价七八百）",
+    "main_visual_tactics": [
+      "脸部问题特写制造焦虑",
+      "前后对比展示效果",
+      "大量产品堆叠制造超值感",
+      "价格弹窗刺激下单",
+      "成分卡片强调专业性",
+      "质地微距展示使用体验"
+    ],
+    "creative_summary_for_generation": "视频采用快节奏剪辑，由多位不同形象的女性（包括明星和素人）轮流出镜，形成‘万人推荐’的假象。核心视觉逻辑是：先展示糟糕的皮肤状态（红、痘、干），再展示产品带来的光滑水润效果。中间穿插大量产品包装特写、价格数字放大、以及‘买一送多’的实物展示。整体色调明亮，字幕颜色鲜艳（红、黄、白），配合急促的口播和音效，营造紧迫感和高性价比氛围。",
+    "created_by": "global_agent",
+    "schema_version": "competitor_global_image_v1"
+  },
+  "module_records": [
+    {
+      "module_id": "m_hook",
+      "module_name": "pain_point_hook",
+      "module_name_cn": "痛点唤醒模块",
+      "module_role": "attention_hook",
+      "what_happens": "视频开头通过快速剪辑展示多种皮肤问题：泛红、痘痘、卡粉、起皮、厚重负担。旁白指出2026年还在用普通水乳是错误的，制造焦虑并引出解决方案。",
+      "why_it_matters": "直接击中目标用户的核心痛点，建立‘你也需要改变’的认知，为后续推出产品做铺垫。",
+      "evidence_timestamps": [
+        0.0,
+        54.0,
+        56.0,
+        58.0,
+        60.0,
+        61.0
+      ],
+      "key_text_or_speech": [
+        "如果你的水乳用完了，那26年就不要再买了",
+        "都2026年了，还在用这种水乳",
+        "是没办法修红祛痘祛黄的",
+        "还加重皮肤负担",
+        "就开始卡粉起皮的"
+      ],
+      "visual_tactics_summary": [
+        "脸部泛红/闭口特写制造痛点焦虑",
+        "前后对比制造效果证明",
+        "文字高亮强调负面后果"
+      ],
+      "module_summary_for_generation": "开篇必须展示具体的皮肤问题（红、痘、干），配合否定句（‘别再用了’），迅速抓住用户注意力。画面要真实，甚至略带瑕疵，以增强可信度。"
+    },
+    {
+      "module_id": "m_solution_demo",
+      "module_name": "solution_demonstration",
+      "module_name_cn": "解决方案演示模块",
+      "module_role": "trust_building",
+      "what_happens": "多位达人轮流出镜，演示如何使用该产品。强调其‘一支搞定’的便利性，替代水乳面膜面霜。展示涂抹后的水润光泽感，并列出四大功效（修红、祛痘、祛黄、保湿）。",
+      "why_it_matters": "通过直观的使用演示和多人口碑，降低用户的尝试门槛，建立‘简单有效’的产品认知。",
+      "evidence_timestamps": [
+        3.0,
+        16.0,
+        20.0,
+        63.0,
+        66.0
+      ],
+      "key_text_or_speech": [
+        "我已经开始用修红加祛痘...",
+        "用这个就不需要用水乳面膜和面霜了",
+        "直接涂这一支就可以了",
+        "你就用这种修红加祛痘加去黄加保湿",
+        "四效合一的安敏优次抛精华"
+      ],
+      "visual_tactics_summary": [
+        "挤出液体展示质地",
+        "涂抹动作展示吸收速度",
+        "手指指向脸颊展示效果",
+        "特效文字罗列功效"
+      ],
+      "module_summary_for_generation": "选取不同场景（居家、浴室、办公室）和不同着装的人物，重复‘涂抹-吸收-展示光泽’的动作。字幕需同步列出核心功效关键词，强化‘一站式解决’的印象。"
+    },
+    {
+      "module_id": "m_price_anchor",
+      "module_name": "price_anchor_and_offer",
+      "module_name_cn": "价格锚定与促销模块",
+      "module_role": "conversion_push",
+      "what_happens": "进入直播间或促销场景，主持人手持大礼盒，展示内部满满的赠品。通过对话形式抛出价格‘369元’，并与‘平时七八百’进行强烈对比，强调‘拍一发55’的超值优惠。",
+      "why_it_matters": "利用价格反差和赠品数量制造‘不买就亏’的心理，激发冲动消费。",
+      "evidence_timestamps": [
+        35.0,
+        38.0,
+        40.0,
+        42.0,
+        48.0,
+        50.0
+      ],
+      "key_text_or_speech": [
+        "多少？369！",
+        "我说的不是这一盒，我说的是全部",
+        "全部只要369",
+        "平时这一盒都要七八百了",
+        "现在安敏优春日福利，拍一发55件呢",
+        "这个价格抢不到真的会疯哎"
+      ],
+      "visual_tactics_summary": [
+        "价格弹窗刺激下单",
+        "赠品堆叠制造超值感",
+        "礼盒开盖展示丰富内容",
+        "箭头指向引导视线"
+      ],
+      "module_summary_for_generation": "设计一个‘开箱’或‘展示’环节，将产品与大量赠品（面膜、小样等）堆在一起。通过画外音或主播口播，反复强调‘总数’和‘单价’的巨大差异，视觉上要用醒目的数字字体。"
+    },
+    {
+      "module_id": "m_proof",
+      "module_name": "authority_and_proof",
+      "module_name_cn": "权威背书与成分证明模块",
+      "module_role": "trust_building",
+      "what_happens": "引入明星（如苗苗、蓝盈莹、韦雪等）或专家形象，强调品牌背景（昆药集团50年专研）。特写包装盒上的成分表，指出核心成分‘青蒿油AN+’，并用‘含金量’一词形容其珍贵。",
+      "why_it_matters": "利用名人效应和深厚的科研背景消除用户对‘廉价替代品’的疑虑，提升产品的专业度和可信度。",
+      "evidence_timestamps": [
+        24.0,
+        28.0,
+        32.0,
+        72.0,
+        75.0,
+        77.0
+      ],
+      "key_text_or_speech": [
+        "你要是一年只买一次精华，那就买安敏优次抛精华",
+        "明星蓝盈莹/苗苗/韦雪推荐",
+        "它可是浓缩了昆药集团50年专研的青蒿油AN+",
+        "光这一个成分啊，你就知道有多高的含金量了"
+      ],
+      "visual_tactics_summary": [
+        "明星同款字样制造背书感",
+        "成分卡片制造专业可信",
+        "手指点读成分表"
+      ],
+      "module_summary_for_generation": "安排一位具有专业感或明星身份的人物，手持产品包装盒，重点展示背后的成分说明。口播要强调‘大厂’、‘多年研发’、‘核心成分’，建立技术壁垒感。"
+    },
+    {
+      "module_id": "m_cta",
+      "module_name": "call_to_action",
+      "module_name_cn": "行动号召模块",
+      "module_role": "conversion_push",
+      "what_happens": "视频结尾再次强调优惠的稀缺性，呼吁观众立即进入直播间抢购。配合向下指的箭头动画，引导点击购买链接。",
+      "why_it_matters": "在用户产生购买欲望的最高点，提供明确的行动指令，缩短决策路径，提高转化率。",
+      "evidence_timestamps": [
+        53.0,
+        86.0
+      ],
+      "key_text_or_speech": [
+        "快来我直播间吧",
+        "一用一个不吱声",
+        "这个价抢不到真的会疯哎"
+      ],
+      "visual_tactics_summary": [
+        "箭头指引",
+        "紧迫感话术",
+        "自信承诺"
+      ],
+      "module_summary_for_generation": "最后几秒语速加快，语气激昂。画面出现明显的‘点击’暗示（如下箭头、手指指向下方），配合‘限时’、‘限量’等词汇，逼迫用户立刻行动。"
+    }
+  ],
+  "raw_element_mentions": [
+    {
+      "mention_id": "rm_001",
+      "module_id": "m_hook",
+      "element_type": "visual_tactic",
+      "raw_description": "女性脸部泛红、有痘印的特写镜头，手指指向脸颊瑕疵。",
+      "tentative_name": "Pain_Point_Face_Shot",
+      "tentative_name_cn": "痛点面部特写",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "画面展示皮肤泛红、毛孔粗大、有痘印的状态，配文‘还加重皮肤负担’。",
+      "evidence_timestamps": [
+        58.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "visual_trigger",
+      "generation_value": "可迁移",
+      "notes": "真实的皮肤问题特写比精修图更有说服力。"
+    },
+    {
+      "mention_id": "rm_002",
+      "module_id": "m_solution_demo",
+      "element_type": "action",
+      "raw_description": "女性用手将白色乳液状精华涂抹在脸上并轻轻按摩至吸收。",
+      "tentative_name": "Application_Demo",
+      "tentative_name_cn": "涂抹演示",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "展示产品流动性强，抹开后迅速吸收，皮肤呈现哑光水润感。",
+      "evidence_timestamps": [
+        16.0,
+        79.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "demo",
+      "generation_value": "可迁移",
+      "notes": "强调‘一抹化水’和‘不粘腻’的质感。"
+    },
+    {
+      "mention_id": "rm_003",
+      "module_id": "m_price_anchor",
+      "element_type": "prop",
+      "raw_description": "打开一个绿色大礼盒，里面整齐排列着数十支白色次抛精华和多个白色包装盒。",
+      "tentative_name": "Gift_Set_Display",
+      "tentative_name_cn": "赠品堆叠展示",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "礼盒内物品丰富，视觉冲击力极强，配文‘全部只要369’。",
+      "evidence_timestamps": [
+        35.0,
+        48.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "visual_trigger",
+      "generation_value": "可迁移",
+      "notes": "通过数量堆叠制造‘量大实惠’的错觉。"
+    },
+    {
+      "mention_id": "rm_004",
+      "module_id": "m_proof",
+      "element_type": "text_speech",
+      "raw_description": "特写产品包装盒背面，手指指着‘青蒿油AN+’成分，字幕显示‘50年专研’。",
+      "tentative_name": "Ingredient_Card",
+      "tentative_name_cn": "成分卡片",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "包装盒上印有详细的成分表和‘昆药集团50年专研’字样。",
+      "evidence_timestamps": [
+        75.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "proof",
+      "generation_value": "可迁移",
+      "notes": "将复杂的成分表可视化，突出核心卖点。"
+    },
+    {
+      "mention_id": "rm_005",
+      "module_id": "m_cta",
+      "element_type": "visual_tactic",
+      "raw_description": "画面右侧出现一个红色的向下箭头，指向屏幕下方的购买链接区域。",
+      "tentative_name": "Arrow_Guide",
+      "tentative_name_cn": "箭头指引",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "红色箭头动态出现，引导用户视线向下，配合‘快来我直播间’的话术。",
+      "evidence_timestamps": [
+        53.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "cta",
+      "generation_value": "可迁移",
+      "notes": "简单的视觉引导能有效提升点击率。"
+    },
+    {
+      "mention_id": "rm_006",
+      "module_id": "m_hook",
+      "element_type": "text_speech",
+      "raw_description": "屏幕下方出现大号白色字幕：‘如果你的水乳用完了’。",
+      "tentative_name": "Hook_Subtitle",
+      "tentative_name_cn": "钩子字幕",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "字幕醒目，直接针对用户当前状态提问。",
+      "evidence_timestamps": [
+        0.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "hook",
+      "generation_value": "可迁移",
+      "notes": "口语化的字幕能增加亲切感和代入感。"
+    },
+    {
+      "mention_id": "rm_007",
+      "module_id": "m_proof",
+      "element_type": "people",
+      "raw_description": "多位不同风格的女性（明星、网红、素人）轮流出镜推荐产品。",
+      "tentative_name": "Celebrity_Endorsement_Montage",
+      "tentative_name_cn": "明星背书蒙太奇",
+      "new_candidate": "",
+      "evidence_source": "video",
+      "evidence_text": "画面左侧出现‘明星蓝盈莹’、‘芳华主演苗苗’、‘明星韦雪’等标签。",
+      "evidence_timestamps": [
+        24.0,
+        28.0,
+        32.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "proof",
+      "generation_value": "low",
+      "notes": "由于涉及具体艺人肖像权，我方难以直接复用，但其‘多人推荐’的策略模式可迁移。"
+    },
+    {
+      "mention_id": "rm_008",
+      "module_id": "m_price_anchor",
+      "element_type": "text_speech",
+      "raw_description": "屏幕上弹出巨大的黄色数字‘369’，周围伴有感叹号。",
+      "tentative_name": "Price_PopUp",
+      "tentative_name_cn": "价格弹窗",
+      "new_candidate": "",
+      "evidence_source": "visible_text",
+      "evidence_text": "数字巨大且色彩鲜艳，强调价格的震撼力。",
+      "evidence_timestamps": [
+        36.0,
+        47.0
+      ],
+      "evidence_strength": "direct_observed",
+      "role_in_module": "visual_trigger",
+      "generation_value": "可迁移",
+      "notes": "价格数字的视觉化处理是电商直播常用手法。"
+    }
+  ],
+  "frame_requests": [
+    {
+      "frame_request_id": "fr_001",
+      "module_id": "m_hook",
+      "timestamp_sec": 58,
+      "frame_role": "pain_evidence",
+      "what_to_capture": "女性脸部泛红、有痘印的特写，手指指向瑕疵。",
+      "visual_tactic": "脸部问题特写制造痛点焦虑",
+      "why_this_frame": "直观展示用户最在意的皮肤问题，引发共鸣。",
+      "avoid_similar_reason": "避免选择已经使用产品后光滑的脸部画面。",
+      "related_mentions": [
+        "rm_001"
+      ]
+    },
+    {
+      "frame_request_id": "fr_002",
+      "module_id": "m_price_anchor",
+      "timestamp_sec": 35,
+      "frame_role": "offer_evidence",
+      "what_to_capture": "打开的绿色大礼盒，内部装满次抛精华和包装盒。",
+      "visual_tactic": "赠品堆叠制造超值感",
+      "why_this_frame": "展示‘拍一发55’的具体实物，证明优惠力度。",
+      "avoid_similar_reason": "避免只展示单个产品的画面。",
+      "related_mentions": [
+        "rm_003"
+      ]
+    },
+    {
+      "frame_request_id": "fr_003",
+      "module_id": "m_proof",
+      "timestamp_sec": 75,
+      "frame_role": "product_evidence",
+      "what_to_capture": "手指特写指向包装盒背面的成分表，高亮‘青蒿油AN+’。",
+      "visual_tactic": "成分卡片制造专业可信",
+      "why_this_frame": "用细节证明产品的科技含量和专业背景。",
+      "avoid_similar_reason": "避免只展示正面Logo的画面。",
+      "related_mentions": [
+        "rm_004"
+      ]
+    },
+    {
+      "frame_request_id": "fr_005",
+      "module_id": "m_solution_demo",
+      "timestamp_sec": 16,
+      "frame_role": "result_evidence",
+      "what_to_capture": "女性涂抹精华后，脸颊呈现水润光泽的特写。",
+      "visual_tactic": "使用前后面部对比",
+      "why_this_frame": "展示产品使用后的即时效果（水润、光泽）。",
+      "avoid_similar_reason": "避免涂抹过程中的模糊画面。",
+      "related_mentions": [
+        "rm_002"
+      ]
+    },
+    {
+      "frame_request_id": "fr_004",
+      "module_id": "m_cta",
+      "timestamp_sec": 53,
+      "frame_role": "cta",
+      "what_to_capture": "主播手持礼盒，画面右侧出现红色向下箭头。",
+      "visual_tactic": "箭头指引",
+      "why_this_frame": "明确的购买引导信号，促进转化。",
+      "avoid_similar_reason": "避免没有引导箭头的普通口播画面。",
+      "related_mentions": [
+        "rm_005"
+      ]
+    }
+  ],
+  "transfer_pattern_records": [
+    {
+      "pattern_id": "pt_001",
+      "pattern_type": "strategy_pattern",
+      "pattern_name": "Pain-Solution-Offer",
+      "pattern_name_cn": "痛点-方案-促销三段式",
+      "description": "先通过展示用户痛点建立共鸣，再推出产品作为完美解决方案，最后用极具吸引力的价格和赠品促成下单。",
+      "source_modules": [
+        "m_hook",
+        "m_solution_demo",
+        "m_price_anchor"
+      ],
+      "source_mentions": [
+        "rm_001",
+        "rm_002",
+        "rm_003"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "我方视频也可遵循此结构：开头展示竞品或旧习惯的弊端 -> 中间演示我方产品如何解决 -> 结尾抛出限时优惠。保持节奏紧凑，情绪递进。",
+      "non_transferable_parts": [
+        "具体的价格数字（369）",
+        "具体的赠品数量（55件）",
+        "竞品的品牌名称和包装"
+      ]
+    },
+    {
+      "pattern_id": "pt_002",
+      "pattern_type": "visual_pattern",
+      "pattern_name": "Text_Highlight_Emotion",
+      "pattern_name_cn": "情绪化文字高亮",
+      "description": "在关键口播词（如价格、功效、痛点）上使用超大字号、高饱和度颜色（红、黄）的字幕，并配合动态效果，强化记忆点。",
+      "source_modules": [
+        "m_hook",
+        "m_price_anchor"
+      ],
+      "source_mentions": [
+        "rm_006",
+        "rm_008"
+      ],
+      "transferability": "high",
+      "how_to_adapt_for_own_brand": "提炼我方核心卖点（如‘敏感肌救星’、‘买一送一’），制作对应的动态字幕模板，在视频关键节点自动叠加，提升视觉冲击力。",
+      "non_transferable_parts": [
+        "具体的文案措辞"
+      ]
+    }
+  ],
+  "ingestion_status": {
+    "status": "pass",
+    "warnings": [],
+    "extraction_warnings": []
+  }
+}

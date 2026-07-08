@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告短视频语义 Clip 资产</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
+        .header { background: #fff; padding: 20px; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .header h1 { font-size: 20px; margin-bottom: 10px; }
+        .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tab { padding: 8px 16px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: #fff; font-size: 13px; }
+        .tab:hover { border-color: #1890ff; }
+        .tab.active { background: #1890ff; color: #fff; border-color: #1890ff; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .section h2 { font-size: 16px; color: #1890ff; margin-bottom: 15px; border-bottom: 2px solid #1890ff; padding-bottom: 8px; }
+        .section h3 { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .meta-item { background: #fafafa; padding: 10px; border-radius: 6px; }
+        .meta-item .label { font-size: 11px; color: #999; text-transform: uppercase; }
+        .meta-item .value { font-size: 14px; font-weight: 500; margin-top: 4px; }
+        .chain-display { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; margin: 10px 0; }
+        .chain-node { background: #e6f7ff; color: #1890ff; padding: 4px 10px; border-radius: 4px; font-size: 12px; white-space: nowrap; }
+        .chain-arrow { color: #ccc; font-size: 12px; }
+        .video-wrapper { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .video-box { flex: 1; min-width: 300px; }
+        .video-box video { width: 100%; border-radius: 8px; background: #000; }
+        .analysis-box { flex: 1; min-width: 300px; }
+        .analysis-box pre { background: #f8f8f8; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 11px; line-height: 1.5; max-height: 350px; overflow-y: auto; }
+
+        .clips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
+        .clip-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+        .clip-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+        .clip-card img { width: 100%; height: 200px; object-fit: cover; cursor: pointer; }
+        .clip-info { padding: 12px; }
+        .clip-info h3 { font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .clip-info .seq { background: #1890ff; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 11px; }
+        .clip-info .rank { background: #ff4d4f; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 11px; }
+        .clip-info .stage-badge { background: #e6f7ff; color: #1890ff; padding: 1px 6px; border-radius: 3px; font-size: 11px; }
+        .clip-info .node-badge { background: #f9f0ff; color: #722ed1; padding: 1px 6px; border-radius: 3px; font-size: 11px; }
+        .clip-info .time { font-size: 11px; color: #999; margin-bottom: 4px; }
+        .clip-info p { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 4px; }
+        .clip-info .title { font-weight: 500; color: #333; }
+        .clip-detail { display: none; padding: 12px; border-top: 1px solid #f0f0f0; font-size: 12px; color: #666; line-height: 1.6; }
+        .clip-detail.open { display: block; }
+        .clip-detail .label { color: #999; font-size: 11px; }
+        .clip-detail p { margin-bottom: 4px; }
+        .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+        .evidence-item { background: #fafafa; padding: 6px 8px; border-radius: 4px; font-size: 11px; }
+        .evidence-item .ev-label { color: #999; font-size: 10px; text-transform: uppercase; }
+        .evidence-item .ev-value { margin-top: 2px; color: #333; }
+        .embedding-text { background: #f8f8f8; padding: 8px; border-radius: 4px; font-size: 11px; margin-top: 6px; white-space: pre-wrap; word-break: break-all; }
+
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; margin-bottom: 4px; }
+        .tag.face { background: #fff1f0; color: #cf1322; }
+        .tag.product { background: #f6ffed; color: #389e0d; }
+        .tag.prop { background: #fff7e6; color: #d48806; }
+        .tag.scene { background: #f9f0ff; color: #722ed1; }
+        .tag.stage { background: #e6f7ff; color: #1890ff; }
+        .tag.default { background: #f0f0f0; color: #666; }
+
+        .clustering-box { background: #fafafa; padding: 15px; border-radius: 8px; }
+        .clustering-box p { font-size: 13px; line-height: 1.6; margin-bottom: 8px; }
+        .clustering-box .label { font-size: 11px; color: #999; }
+
+        .hidden { display: none; }
+        .no-video { text-align: center; padding: 40px; color: #999; }
+        .toggle-btn { background: #1890ff; color: #fff; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-top: 6px; }
+        .toggle-btn:hover { background: #40a9ff; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>广告短视频语义 Clip 资产</h1>
+        <div class="tabs" id="tabs"></div>
+    </div>
+    <div class="container" id="container"></div>
+
+    <script>
+        const results = RESULTS_DATA_PLACEHOLDER;
+
+        const STAGE_LABELS = {
+            opening_hook: '开头钩子', pain_point: '痛点呈现', problem_amplification: '放大问题',
+            product_reveal: '产品亮相', product_explanation: '产品解释', usage_demo: '使用演示',
+            texture_demo: '质地展示', effect_proof: '效果展示', ingredient_proof: '成分证明',
+            authority_endorsement: '权威背书', social_proof: '社会证明', offer_price: '价格优惠',
+            urgency_cta: '紧迫CTA', scene_transition: '转场过渡', other: '其他', unknown: '未知'
+        };
+
+        const CONVERSION_ROLES = {
+            attention: '吸引注意', resonance: '制造共鸣', education: '解释产品',
+            proof: '证明效果', desire: '制造欲望', offer: '给出利益点',
+            action: '推动行动', transition: '转场', unknown: '未知'
+        };
+
+        function stageLabel(s) { return STAGE_LABELS[s] || s || '其他'; }
+        function stageClass(s) { return 'stage-' + (s || 'other'); }
+        function escHtml(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+        function convLabel(r) { return CONVERSION_ROLES[r] || r || ''; }
+
+        function renderTag(text, type) {
+            const cls = type || 'default';
+            return '<span class="tag ' + cls + '">' + escHtml(text) + '</span>';
+        }
+
+        function renderChain(chain) {
+            if (!chain || !chain.length) return '<span style="color:#999">无</span>';
+            return chain.map(s => '<span class="chain-node">' + stageLabel(s) + '</span>').join('<span class="chain-arrow"> → </span>');
+        }
+
+        function renderTaxonomyTag(t, label) {
+            if (!t || (!t.raw_description && !t.normalized_tag)) return '';
+            let html = '<div style="margin:4px 0"><span class="label">' + escHtml(label) + ': </span>';
+            if (t.normalized_tag) html += renderTag(t.normalized_tag, 'stage');
+            if (t.new_candidate) html += renderTag('新候选: ' + t.new_candidate, 'default');
+            if (t.raw_description) html += '<span style="font-size:11px;color:#666"> ' + escHtml(t.raw_description) + '</span>';
+            if (t.confidence > 0) html += '<span style="font-size:10px;color:#999"> (' + (t.confidence * 100).toFixed(0) + '%)</span>';
+            html += '</div>';
+            return html;
+        }
+
+        function init() {
+            const tabs = document.getElementById('tabs');
+            const container = document.getElementById('container');
+            const videoIds = Object.keys(results);
+            if (!videoIds.length) { container.innerHTML = '<div class="no-video">暂无分析结果</div>'; return; }
+            videoIds.forEach((id, idx) => {
+                const tab = document.createElement('div');
+                tab.className = 'tab' + (idx === 0 ? ' active' : '');
+                tab.textContent = id;
+                tab.onclick = () => showVideo(id, tab);
+                tabs.appendChild(tab);
+            });
+            showVideo(videoIds[0], tabs.firstChild);
+        }
+
+        function showVideo(videoId, tabEl) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            tabEl.classList.add('active');
+            const data = results[videoId];
+            const container = document.getElementById('container');
+            if (!data) { container.innerHTML = '<div class="no-video">无数据</div>'; return; }
+
+            const meta = data.video_strategy || data.strategy_pattern || {};
+            const clips = data.clip_outputs || [];
+            const tags = data.video_level_tags || data.tags || {};
+            const clustering = data.video_clustering_features || data.pattern_for_clustering || {};
+            const qf = data.quality_flags || {};
+            const videoFile = data.video_path ? data.video_path.split(/[/\\]/).pop() : '';
+
+            let html = '';
+
+            // ── 视频信息 ──
+            html += '<div class="section"><h2>视频信息</h2>';
+            html += '<div class="video-wrapper">';
+            html += '<div class="video-box"><video controls><source src="samples/' + escHtml(videoFile) + '" type="video/mp4">您的浏览器不支持视频播放</video></div>';
+            html += '<div class="analysis-box">';
+            html += '<h3 style="margin-bottom:8px">' + escHtml(meta.generic_pattern_name || meta.pattern_name || '策略分析') + '</h3>';
+            html += '<p style="font-size:12px;color:#666;margin-bottom:8px">模型: ' + escHtml(data.model || '-') + ' | Semantic clips: ' + clips.length + ' 个</p>';
+            html += '<p style="font-size:12px;color:#666;margin-bottom:10px">' + escHtml(meta.brand_free_pattern_summary || meta.pattern_summary || '') + '</p>';
+            if (meta.persuasion_logic) html += '<p style="font-size:12px;color:#666;margin-bottom:10px"><b>说服逻辑:</b> ' + escHtml(meta.persuasion_logic) + '</p>';
+            html += '<p style="font-size:11px;color:#999">转化驱动: ' + escHtml(meta.primary_conversion_driver || '-') + '</p>';
+            html += '</div></div>';
+
+            // 策略链路
+            if (meta.strategy_chain && meta.strategy_chain.length) {
+                html += '<div style="margin-top:15px"><h3>策略链路</h3><div class="chain-display">' + renderChain(meta.strategy_chain) + '</div></div>';
+            }
+            html += '</div>';
+
+            // ── Semantic Clips ──
+            if (clips.length) {
+                html += '<div class="section"><h2>Semantic Clips (' + clips.length + ' 个)</h2><div class="clips-grid">';
+                clips.forEach((clip, idx) => {
+                    // Find keyframe image path
+                    let kfImg = '';
+                    if (clip.keyframe_path) {
+                        kfImg = clip.keyframe_path.split(/[/\\]/).pop();
+                        // Try to find the clip folder
+                        const clipDir = clip.clip_path ? clip.clip_path.split(/[/\\]/).slice(-2, -1)[0] : '';
+                        if (clipDir) kfImg = videoId + '/clips/' + clipDir + '/keyframe.jpg';
+                    }
+
+                    const stage = clip.primary_strategy_stage || 'unknown';
+                    const detailId = 'clip-detail-' + idx;
+
+                    html += '<div class="clip-card">';
+                    html += '<img src="outputs/' + escHtml(kfImg) + '" alt="' + escHtml(clip.clip_id) + '" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/><text fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>无图片</text></svg>\'">';
+                    html += '<div class="clip-info">';
+                    html += '<h3>';
+                    html += '<span class="seq">#' + (clip.sequence_index || (idx + 1)) + '</span>';
+                    html += '<span class="rank">P' + (clip.importance_rank || '-') + '</span>';
+                    html += '<span class="stage-badge">' + stageLabel(stage) + '</span>';
+                    if (clip.visual_node_type && clip.visual_node_type !== 'unknown') {
+                        html += '<span class="node-badge">' + escHtml(clip.visual_node_type) + '</span>';
+                    }
+                    html += '</h3>';
+                    html += '<div class="time">' + (clip.start_sec || 0).toFixed(1) + 's - ' + (clip.end_sec || 0).toFixed(1) + 's (' + (clip.duration_sec || 0).toFixed(1) + 's)';
+                    if (clip.conversion_role && clip.conversion_role !== 'unknown') html += ' | ' + convLabel(clip.conversion_role);
+                    html += '</div>';
+                    if (clip.clip_title) html += '<p class="title">' + escHtml(clip.clip_title) + '</p>';
+                    if (clip.what_happens_visually) html += '<p>' + escHtml(clip.what_happens_visually) + '</p>';
+                    if (clip.brand_free_strategy_description) html += '<p style="color:#1890ff"><i>' + escHtml(clip.brand_free_strategy_description) + '</i></p>';
+
+                    // Toggle detail button
+                    html += '<button class="toggle-btn" onclick="var d=document.getElementById(\'' + detailId + '\');d.classList.toggle(\'open\')">详细信息</button>';
+                    html += '</div>';
+
+                    // Detail panel
+                    html += '<div class="clip-detail" id="' + detailId + '">';
+
+                    // Strategy stage detail
+                    if (clip.strategy_stage_detail) {
+                        html += renderTaxonomyTag(clip.strategy_stage_detail, '策略阶段');
+                    }
+                    if (clip.secondary_strategy_stages && clip.secondary_strategy_stages.length) {
+                        html += '<p><span class="label">次要阶段: </span>' + clip.secondary_strategy_stages.map(s => stageLabel(s)).join(', ') + '</p>';
+                    }
+                    if (clip.is_repeated_stage) {
+                        html += '<p><span class="label">重复阶段: </span>第 ' + clip.stage_repeat_index + ' 次出现</p>';
+                    }
+
+                    // Visual node detail
+                    if (clip.visual_node_detail) {
+                        html += renderTaxonomyTag(clip.visual_node_detail, '视觉节点');
+                    }
+
+                    // Visual elements
+                    const ve = clip.visual_elements || {};
+                    html += '<div class="evidence-grid">';
+                    const fp = ve.face_person || {};
+                    if (fp.has_person) {
+                        html += '<div class="evidence-item"><div class="ev-label">人脸/人物</div><div class="ev-value">' + escHtml(fp.person_type || '-') + ' ' + escHtml(fp.action || '') + (fp.person_count > 1 ? ' (' + fp.person_count + '人)' : '') + '</div></div>';
+                    }
+                    const prod = ve.product || {};
+                    if (prod.has_product) {
+                        html += '<div class="evidence-item"><div class="ev-label">产品</div><div class="ev-value">' + escHtml(prod.brand_raw_visible_text || prod.category || '-') + ' [' + escHtml(prod.exposure_level || '') + ']</div></div>';
+                    }
+                    const props = ve.props || [];
+                    if (props.length) {
+                        html += '<div class="evidence-item"><div class="ev-label">道具</div><div class="ev-value">' + escHtml(props.map(p => p.raw_description || p.description || p.normalized_tag || '').filter(Boolean).join(', ') || '-') + '</div></div>';
+                    }
+                    const scene = ve.scene || {};
+                    if (scene.location_type || (scene.scene_style_detail && scene.scene_style_detail.normalized_tag)) {
+                        html += '<div class="evidence-item"><div class="ev-label">场景</div><div class="ev-value">' + escHtml(scene.location_type || '-') + ' ' + escHtml((scene.scene_style_detail || {}).normalized_tag || '') + '</div></div>';
+                    }
+                    const acts = ve.actions || [];
+                    if (acts.length) {
+                        html += '<div class="evidence-item"><div class="ev-label">动作</div><div class="ev-value">' + escHtml(acts.map(a => a.raw_description || a.normalized_tag || a.description || '').filter(Boolean).join(', ') || '-') + '</div></div>';
+                    }
+                    const vtext = ve.visible_text || [];
+                    if (vtext.length) {
+                        html += '<div class="evidence-item"><div class="ev-label">可见文字</div><div class="ev-value">' + escHtml(vtext.map(t => t.text || '').filter(Boolean).join(' | ') || '-') + '</div></div>';
+                    }
+                    html += '</div>';
+
+                    // Clustering features
+                    const cf = clip.clustering_features || {};
+                    if (cf.strategy_embedding_text) {
+                        html += '<div style="margin-top:8px"><span class="label">策略聚类文本: </span></div><div class="embedding-text">' + escHtml(cf.strategy_embedding_text) + '</div>';
+                    }
+                    if (cf.visual_embedding_text) {
+                        html += '<div style="margin-top:8px"><span class="label">视觉聚类文本: </span></div><div class="embedding-text">' + escHtml(cf.visual_embedding_text) + '</div>';
+                    }
+                    if (cf.entity_embedding_text) {
+                        html += '<div style="margin-top:8px"><span class="label">实体聚类文本: </span></div><div class="embedding-text">' + escHtml(cf.entity_embedding_text) + '</div>';
+                    }
+
+                    html += '</div>'; // clip-detail
+                    html += '</div>'; // clip-card
+                });
+                html += '</div></div>';
+            }
+
+            // ── 聚类特征 ──
+            if (clustering.brand_free_strategy_embedding_text || clustering.visual_style_embedding_text || clustering.tag_text || clustering.short_pattern_text || clustering.long_pattern_text) {
+                html += '<div class="section"><h2>视频级聚类特征</h2><div class="clustering-box">';
+                const bfse = clustering.brand_free_strategy_embedding_text || clustering.long_pattern_text || '';
+                const vse = clustering.visual_style_embedding_text || clustering.key_visual_sequence_text || '';
+                const ee = clustering.entity_embedding_text || clustering.tag_text || '';
+                const scc = clustering.strategy_chain_code || clustering.stage_sequence_text || '';
+                if (scc) html += '<p><span class="label">策略链编码: </span>' + escHtml(scc) + '</p>';
+                if (bfse) html += '<p><span class="label">去品牌策略文本: </span>' + escHtml(bfse) + '</p>';
+                if (vse) html += '<p><span class="label">视觉风格文本: </span>' + escHtml(vse) + '</p>';
+                if (ee) html += '<p><span class="label">实体文本: </span>' + escHtml(ee) + '</p>';
+                html += '</div></div>';
+            }
+
+            // ── 标签 ──
+            const tagGroups = [
+                { key: 'strategy_stages', label: '策略阶段', cls: 'stage' },
+                { key: 'people', label: '人物', cls: 'face' },
+                { key: 'products', label: '产品', cls: 'product' },
+                { key: 'props', label: '道具', cls: 'prop' },
+                { key: 'scenes', label: '场景', cls: 'scene' },
+                { key: 'actions', label: '动作', cls: 'default' },
+                { key: 'selling_points', label: '卖点', cls: 'default' },
+                { key: 'conversion_methods', label: '转化方式', cls: 'default' },
+                { key: 'creative_types', label: '创意类型', cls: 'default' },
+                { key: 'visual_styles', label: '视觉风格', cls: 'default' },
+            ];
+            const hasTags = tagGroups.some(g => tags[g.key] && tags[g.key].length);
+            if (hasTags) {
+                html += '<div class="section"><h2>视频级标签</h2>';
+                tagGroups.forEach(g => {
+                    const items = tags[g.key] || [];
+                    if (items.length) {
+                        html += '<div style="margin-bottom:8px"><span style="font-size:12px;color:#999;margin-right:6px">' + g.label + ':</span>';
+                        html += items.map(t => renderTag(t, g.cls)).join('');
+                        html += '</div>';
+                    }
+                });
+                html += '</div>';
+            }
+
+            // ── 质量标记 ──
+            const flags = Object.entries(qf).filter(([k, v]) => v === true);
+            if (flags.length) {
+                html += '<div class="section"><h2>质量标记</h2><div>';
+                flags.forEach(([k, v]) => { html += renderTag(k.replace(/_/g, ' '), 'default'); });
+                html += '</div></div>';
+            }
+
+            // ── 原始 JSON ──
+            html += '<div class="section"><h2>原始 JSON</h2>';
+            html += '<div class="analysis-box"><pre>' + escHtml(JSON.stringify(data, null, 2)) + '</pre></div></div>';
+
+            container.innerHTML = html;
+        }
+
+        init();
+    </script>
+</body>
+</html>

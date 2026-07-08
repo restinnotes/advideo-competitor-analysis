@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """JSON 处理工具"""
 
 import json
